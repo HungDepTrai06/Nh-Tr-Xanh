@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebBanHang.Models.NGUOIDUNG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="container container_fullwidth" style="text-align:center; width:90%">
+    <div class="row">
+        <h5 style="color:forestgreen">Danh sách người dùng</h5><br />
+        <table class="table table-bordered" style="text-align:center">
+            <tr style="color:green">
+                <th></th>
+                <th style="text-align:left">Mã ND</th>
+                <th>
+                    Email
+                </th>
+
+                <th>
+                    Họ tên
+                </th>
+                <th>
+                    Giới Tính
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Cấp bậc
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a href="~/Area/NGUOIDUNGs/Edit?id=@item.MAND" class="btn btn-warning">Thông tin</a>
+                        <a href="~/Area/NGUOIDUNGs/Delete?id=@item.MAND" class="btn btn-danger">Xóa</a><br />
+                        <a href="~/Area/NGUOIDUNGs/DSTINND?id=@item.MAND" style="color:blue" class="button wishlist">Danh sách bài đăng</a>
+                    </td>
+                    <td style="text-align:left">
+                        @Html.DisplayFor(modelItem => item.MAND)
+                    </td>
+                    <td style="text-align:left">
+                        @Html.DisplayFor(modelItem => item.EMAIL)
+                    </td>
+                    <td style="text-align:left">
+                        @Html.DisplayFor(modelItem => item.HOTENND)
+                    </td>
+                    <td style="text-align:left">
+                        @if (item.GIOITINH)
+                        {
+                            <label style="color:deepskyblue">Nam</label>
+                        }
+                        else
+                        {
+                            <label style="color:orangered">Nữ</label>
+                        }
+
+                    </td>
+                    <td style="text-align:left">
+                        @item.SDT1<br />@item.SDT2
+                    </td>
+                    <td style="text-align:left">
+                        @if (item.LEVEL == 1)
+                        {
+                            <label style="color:blueviolet">Thành viên</label>
+                        }
+                        else
+                        {
+                            <label style="color:darkblue">Admin</label>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

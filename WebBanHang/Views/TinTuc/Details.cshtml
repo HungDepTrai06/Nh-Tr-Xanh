@@ -1,0 +1,221 @@
+﻿@model WebBanHang.Models.TINTUC
+@using WebBanHang.Models
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+    var db = new DBWebThue();
+}
+
+<div class="container">
+
+    <div class="clearfix">
+    </div>
+    <div class="col-md-12">
+        <div class="map">
+            <iframe width="600" height="350" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Vietnam&amp;aq=&amp;sll=14.058324,108.277199&amp;sspn=21.827722,43.286133&amp;ie=UTF8&amp;hq=&amp;hnear=Vietnam&amp;ll=14.058324,108.277199&amp;spn=8.883583,21.643066&amp;t=m&amp;z=6&amp;output=embed"></iframe>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div style="text-align:left">
+                <h5 style="color:forestgreen; font-style:italic"> Thông tin tin tức </h5>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div style="text-align:right">
+                <div>
+                    @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+                    <a class="button submit" href="~/LuuTin/AddToCart/@Model.ID_TinTuc">Lưu Tin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="clearfix">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="products-details">
+                <div class="col-md-4">
+                    <div class="preview_image">
+                        <div class="preview-small">
+                            <div class="slideshow">
+                                @foreach (var dd in Model.DSANH.Where(x => x.ID_TINTUC == Model.ID_TinTuc).ToList())
+                                {
+                                    <div><a href="#"><img src="~/IndexLayout/images/imagePhongNha/@dd.DUONGDAN" alt="" /></a></div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="products-description">
+                    <h4 class="name"><label style="color:green; text-align:center"> @Model.TIEUDE  </label></h4>
+                    <hr class="border">
+                    <div class="price"> Giá phòng <span class="new_price"> @string.Format("{0:#,##0,000}", Model.GIATIEN) <sup> VNĐ </sup> </span> </div>
+                    <hr class="border">
+                    <div id="tabnav">
+                        <ul>
+                            <li> <a href="#Descraption">Nội dung </a> </li>
+                        </ul>
+                    </div>
+                    <p>
+                        Mã bài đăng: @Model.ID_TinTuc
+                    </p>
+                    <p>
+                        Dịa chỉ: @Model.DIACHITT
+                    </p>
+
+                    <p>
+
+                        Khu Vực:<span style="color:forestgreen; font-style:oblique; font-size:15px">  @Model.HUYENQUAN.TENHUYEN </span> &nbsp; &nbsp;&nbsp; &nbsp; Ngày đăng tin:<span style="text-align:right; color:mediumvioletred"><i> @(Model.NGAYDT.ToShortDateString())</i></span>
+                    </p>
+                    <p> @Model.TIENICH</p>
+                    <p>
+                        @Html.Raw(Model.NOIDUNG)
+                    </p>
+                    <hr class="border">
+                    <div style="font-size:30px">
+                        <div id="tabnav">
+                            <ul>
+                                <li> <a href="#Descraption">Liên hệ </a> </li>
+                            </ul>
+                        </div>
+                        <p>
+                        <p> Tên người liên hệ: <span class="light-red text-info" style="color:darkmagenta; font-size:15px"> @Model.NGUOIDUNG.HOTENND </span> </p>
+                        <p>
+                            Email: <label style="color:dodgerblue; font-family:Tahoma; font-size:15px"> @Model.NGUOIDUNG.EMAIL </label><br /> <br />
+                            Số điện thoại: <label style="color:orangered; font-family:Tahoma; font-size:15px"> @Model.NGUOIDUNG.SDT1  @Model.NGUOIDUNG.SDT2 </label><br>
+                    </div>
+                    <img src="~/IndexLayout/images/share.png" alt="" class="pull-right">
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        <div class="clearfix"> </div>
+        <div class="col-md-12">
+            <div class="col-md-8">
+                <div id="productsDetails" class="hot-products">
+                    <h3 class="title"> <strong> Tin mới nhất</strong>  </h3>
+                    <div class="control"> <a id="prev_hot" class="prev" href="#"> &lt; </a> <a id="next_hot" class="next" href="#"> &gt; </a> </div>
+                    <div class="col-md-12">
+                        @foreach (var tintuc in db.TINTUC.OrderByDescending(x => x.NGAYDT).ToList().Take(5))
+                        {
+
+                            <table class="table table-hover" border="1" style="border-color:brown">
+                                <tr style="padding-left:10px; padding-top:10px">
+                                    <td class="col-md-4">
+                                        @foreach (var dd in db.DSANH.Where(x => x.ID_TINTUC == tintuc.ID_TinTuc).ToList().Take(1))
+                                        {
+                                            <div class="img-thumbnail" style="text-align:center"><a href="~/TinTuc/Details/@tintuc.ID_TinTuc"><img src="~/IndexLayout/images/imagePhongNha/@dd.DUONGDAN " style="width:180px; height:150px" /></a></div><br />
+                                        }
+                                    </td>
+                                    <td class="col-md-8">
+                                        <div class="offer">New</div>
+                                        <a href="~/TinTuc/Details/@tintuc.ID_TinTuc">
+                                            <div class="productname" style="text-decoration-color: chartreuse"><strong> <a href="~/TinTuc/Details/@tintuc.ID_TinTuc" style="color:darkred"> @tintuc.TIEUDE</a></strong></div><hr />
+                                            <div style="font-size:20px">
+                                                <p>
+                                                    Dịa chỉ: @tintuc.DIACHITT
+                                                </p>
+                                                <p>Giá tiền:<span style="color:red"> <u><i> @string.Format("{0:#,##0,000}", tintuc.GIATIEN) VNĐ</i></u></span> &nbsp; &nbsp; Khu Vực:<span style="color:forestgreen; font-style:oblique; font-size:12px">  @tintuc.HUYENQUAN.TENHUYEN </span> &nbsp; &nbsp; Ngày đăng tin:<span style="text-align:right; color:mediumvioletred"><i> @(tintuc.NGAYDT.ToShortDateString())</i></span></p>
+                                                <p>
+                                                    @tintuc.TIENICH
+                                                </p>
+                                                <div>
+                                                    <a class="button submit" href="~/TinTuc/Details?Id=@tintuc.ID_TinTuc">Chi tiết</a>
+                                                    <button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button>
+                                                    @Html.ActionLink("Lưu tin", "AddToCart", "LuuTin", new { ID = tintuc.ID_TinTuc }, new { @class = "button wishlist" })
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="productsDetails" class="hot-products">
+                    <h3 class="title"> <strong> Tin </strong> tương tự </h3>
+                    <div class="control"> <a id="prev_hot" class="prev" href="#"> &lt; </a> <a id="next_hot" class="next" href="#"> &gt; </a> </div>
+                    <div class="row">
+                        @foreach (var item in db.TINTUC.Where(x => x.MAHUYEN == Model.MAHUYEN).OrderBy(x => x.MALOAITT).ToList().Take(8))
+                        {
+                            <a href="~/TinTuc/Details/@item.ID_TinTuc">
+                                <div class="col-md-12">
+                                    <table class="table table-hover" border="1" style="border-color:brown">
+                                        <tr style="padding-left:10px; padding-top:10px">
+                                            <td class="col-md-4">
+                                                @foreach (var dd in db.DSANH.Where(x => x.ID_TINTUC == item.ID_TinTuc).ToList().Take(1))
+                                                {
+                                                    <div class="img-thumbnail" style="text-align:center"><img src="~/IndexLayout/images/imagePhongNha/@dd.DUONGDAN " style="width: 80px; height:70px" /></div><br />
+                                                }
+                                            </td>
+                                            <td class="col-md-8">
+                                                <div style="text-decoration-color: chartreuse"> <a href="~/TinTuc/Details/@item.ID_TinTuc" style="color:darkred"> @item.TIEUDE</a></div>
+                                                <div style="font-size:20px">
+                                                    <p>
+                                                        Dịa chỉ: @item.DIACHITT
+                                                    </p>
+                                                    <p>Giá tiền:<span style="color:red"> <u><i> @string.Format("{0:#,##0,000}", item.GIATIEN) VNĐ</i></u></span></p>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </a>
+                            <hr />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <hr>
+        @Html.Partial("_fooder_2")
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<script language="javascript">
+    /***************************************************************************************
+    * Run when page load
+    ***************************************************************************************/
+    $(document).ready(function () {
+        initSlideShow();
+
+    });
+    /***************************************************************************************
+    ****************************************************************************************/
+    function initSlideShow() {
+        if ($(".slideshow div").length > 1) //Only run slideshow if have the slideshow element and have more than one image.
+        {
+            var transationTime = 5000;//5000 mili seconds i.e 5 second
+            $(".slideshow div:first").addClass('active'); //Make the first image become active i.e on the top of other images
+            setInterval(slideChangeImage, transationTime); //set timer to run the slide show.
+        }
+    }
+    /***************************************************************************************
+    ****************************************************************************************/
+
+    function slideChangeImage() {
+        var active = $(".slideshow div.active"); //Get the current active element.
+        if (active.length == 0) {
+            active = $(".slideshow div:last"); //If do not see the active element is the last image.
+        }
+
+        var next = active.next().length ? active.next() : $(".slideshow div:first"); //get the next element to do the transition
+        active.addClass('lastactive');
+        next.css({ opacity: 0.0 }) //do the fade in fade out transition
+            .addClass('active')
+            .animate({ opacity: 1.0 }, 1500, function () {
+                active.removeClass("active lastactive");
+            });
+
+    }
+
+</script>
+

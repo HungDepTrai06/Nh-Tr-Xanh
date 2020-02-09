@@ -1,0 +1,32 @@
+﻿@model WebBanHang.Models.DSANH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div>
+    <h4>DSANH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TINTUC.MAHUYEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINTUC.MAHUYEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DUONGDAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DUONGDAN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_ANH }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

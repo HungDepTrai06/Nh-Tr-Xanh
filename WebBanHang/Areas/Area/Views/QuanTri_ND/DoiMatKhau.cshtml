@@ -1,0 +1,70 @@
+﻿@model WebBanHang.Models.NGUOIDUNG
+@{
+    ViewBag.Title = "Đổi mật khẫu";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div>
+            @Html.ActionLink("Trở về", "Index", new { @class = "button submit", style = "text-align:right" })
+        </div>
+
+        @Html.AntiForgeryToken()
+        <label style="text-align:center"> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</label>
+        @*<h4 style="text-align:center;color:chartreuse">Bạn hãy nhập đầy đủ các mục phía dưới để đăng tin...</h4>*@
+        <div class="container_fullwidth">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="checkout-page">
+                            <ol class="checkout-steps">
+                                <li class="steps active">
+                                    <a href="#" class="step-title" style="text-align:center"> Đổi mật khẫu </a>
+                                    <div class="step-description">
+                                        <div class="row">
+                                            <div class="col-md-10 col-sm-10">
+                                                <table class="table your-details" style="border-spacing:10px 20px">
+                                                    <tr>
+                                                        <td class="col-md-3"> Nhập mật khẫu cũ <label style="color:red"> (*) </label></td>
+                                                        <td class="col-md-8">
+                                                            <input type="text" name="MKC" id="MKC" />
+                                                            @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-3"> Nhập mật khẫu mới <label style="color:red"> (*) </label></td>
+                                                        <td class="col-md-8">
+                                                            <input type="text" name="MKM" id="MKM" />
+                                                          
+                                                        </td>
+                                                    </tr>
+                                                    @*<tr>
+                                                        <td class="col-md-3"> Nhập lại mật khẫu mới <label style="color:red"> (*) </label></td>
+                                                        <td class="col-md-8">
+                                                            @Html.EditorFor(model => model.PasswordConfirm, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.PasswordConfirm, "", new { @class = "text-danger" })
+                                                        </td>
+                                                    </tr>*@
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <input type="submit" value="Cập nhật" class="btn btn-success" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

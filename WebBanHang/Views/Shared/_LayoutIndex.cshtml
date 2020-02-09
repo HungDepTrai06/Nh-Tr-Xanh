@@ -1,0 +1,193 @@
+﻿@using WebBanHang.Models
+@{
+    NGUOIDUNG nd = (NGUOIDUNG)Session["KhachHang"];
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chào mừng tới Nhà trọ xanh</title>
+    <link href="~/IndexLayout/css/bootstrap.css" rel="stylesheet">
+    <link href="~/IndexLayout/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/IndexLayout/css/flexslider.css" type="text/css" media="screen" />
+    <link href="~/IndexLayout/css/sequence-looptheme.css" rel="stylesheet" media="all" />
+    <link href="~/IndexLayout/css/style.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link type="text/css" href="~/IndexLayout/css/slideshow.css" rel="stylesheet">
+</head>
+<body id="home">
+    <div class="wrapper">
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2">
+                        <div class="logo">
+                            <a href="~/TinTuc/Index"><img src="~/IndexLayout/images/LoGo.jpg" style="width:80px; height:80px" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="header_top">
+                            <div class="row">
+
+                                <div class="col-md-9" style="text-align:right">
+                                    <ul class="usermenu">
+                                        @Html.Partial("_LoginPartialCustommer")
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="header_bottom">
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav topmenu">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+                                        <div class="dropdown-menu">
+                                            <ul class="mega-menu-links">
+                                                <li><a href="~/TinTuc/Index?MaLoaiTT=1">Thuê phòng</a></li>
+                                                <li><a href="~/TinTuc/Index?MaLoaiTT=2">Thuê nhà</a></li>
+                                                <li><a href="~/TinTuc/Index?MaLoaiTT=3">Ở ghép</a></li>
+                                                <li><a href="~/LuuTin/PhanHoi">Phản hồi</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><a href="~/TinTuc/Index?MaLoaiTT=2" class="log btn btn-success">Thuê nhà</a></li>
+                                    <li><a href="~/TinTuc/Index?MaLoaiTT=1" class="log btn btn-success">Thuê phòng</a></li>
+                                    <li><a href="~/TinTuc/Index?MaLoaiTT=3" class="log btn btn-success">Ở ghép</a></li>
+                                    <li><a href="~/TinTuc/LienKet" class="log btn btn-success">Liên kết</a></li>
+                                    <li><a href="~/TinTuc/HuongDan" class="log btn btn-success">Hướng dẫn</a></li>
+                                    <li><a href="~/LuuTin/Index" class="log btn btn-success">Tin đã lưu</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="hom-slider" style="text-align:center">
+            <div class="container">
+                <div id="sequence">
+                    <div class="sequence-prev"><i class="fa fa-angle-left"></i></div>
+                    <div class="sequence-next"><i class="fa fa-angle-right"></i></div>
+                    <ul class="sequence-canvas">
+                        <li class="animate-in">
+                            <div class="flat-caption caption1 formLeft delay300 text-center"><i><span class="suphead" style="color:yellow;text-shadow:1px 0px 2px aqua, 0px 1px 2px green, -1px 0px 2px yellow, 0px -1px 3px yellow">Chào đón tân sinh viên 2019</span></i></div>
+                            <div class="flat-caption caption2 formLeft delay400 text-center">
+                                <h2 style="color:yellow;font-size: 18px; text-shadow:1px 0px 2px green, 0px 1px 2px yellow, -1px 0px 2px yellow, 0px -1px 2px yellow"><b><strong>Chúng tôi có hướng dẫn cụ thể về Nhà Trọ Xanh</strong></b></h2>
+                            </div>
+                            <div class="flat-caption caption3 formLeft delay500 text-center">
+                                <p style="color:aquamarine;text-shadow:1px 0px 3px green, 0px 1px 3px yellow, -1px 0px 3px yellow, 0px -1px 3px yellow">
+                                    <strong>
+                                        Hãy xem hướng dẫn<br>
+                                        và ủng hộ website của chúng tôi<br>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="flat-button caption4 formLeft delay600 text-center" style="text-align:center; color:aqua"><a class="more" href="~/TinTuc/HuongDan" style="text-align:center; color:aqua">XEM HƯỚNG DẪN</a></div>
+                        </li>
+                        <li>
+                            <div class="flat-caption caption2 formLeft delay400">
+                                <h2 style="color:aqua; border:thick; text-shadow:1px 0px 2px green, 0px 1px 2px yellow, -1px 0px 2px yellow, 0px -1px 2px yellow"><i><strong>Liên kết với các trường</strong></i></h2>
+                            </div>
+                            <div class="flat-caption caption3 formLeft delay500">
+                                <h2 style="color:yellow; text-shadow:1px 0px 2px green, 0px 1px 2px yellow, -1px 0px 2px yellow, 0px -1px 2px yellow"><b><strong>Chúng tôi liên kết với các trường đại học, cao đẳng ở TP Hồ Chí Minh</strong></b></h2>
+                            </div>
+                            <div class="flat-button caption5 formLeft delay600" style="text-align:center; color:aqua"><a class="more" href="~/TinTuc/LienKet" style="text-align:center; color:aqua">CHI TIẾT</a></div>
+                        </li>
+                        <li>
+                            <div class="flat-caption caption2 formLeft delay400 text-center">
+                                <h2 style="color:greenyellow; border:groove;text-shadow:1px 0px 2px green, 0px 1px 2px yellow, -1px 0px 2px yellow, 0px -1px 2px yellow"><strong>Bạn muốn cho thuê nhà, cho thuê phòng</strong></h2>
+                            </div>
+                            <div class="flat-caption caption3 formLeft delay500 text-center">
+                                <p style="color:yellow;text-shadow:1px 0px 3px green, 0px 1px 3px yellow, -1px 0px 3px yellow, 0px -1px 3px yellow">
+                                    <strong>
+                                        Hãy đăng ký tài khoản <br>
+                                        Và đăng tin free trên website của chúng tôi
+                                    </strong>
+                                </p>
+
+                            </div>
+                            <div class="flat-button caption4 formLeft delay600 text-center" style="text-align:center; color:aqua"><a class="more" href="~/Custommer/Register">ĐĂNG KÝ</a></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        @RenderBody()
+        <div class="clearfix"></div>
+        <div class="footer">
+            <div class="footer-info">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="footer-logo"><a href="#"><img src="~/IndexLayout/images/LoGo.jpg" style="width:120px; height:100px" /></a></div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <h4 class="title">Liên Hệ <strong>Với chúng tôi</strong></h4>
+                            <p>Adress: 252 Lý Chính Thắng - P.7 - Q.3 - TP HCM</p>
+                            <p>Call Us : (084) 1900 0099</p>
+                            <p>Email : yuukahung@gmail.com</p>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <h4 class="title">Khách hàng</h4>
+                            <ul class="support">
+                                <li> @Html.ActionLink("Đăng ký", "Register", "Custommer", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                <li> @Html.ActionLink("Đăng nhập", "Login", "Custommer", routeValues: null, htmlAttributes: new { id = "registerLink" })</a></li>
+                                @if (nd == null)
+                                {
+                                    <li> @Html.ActionLink("Đăng tin free", "Login", "Custommer", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                }
+                                else
+                                {
+                                    <li><a href="~/Area/QuanTri_ND/CreateTT" id="registerLink">Đăng tin free</a></li>
+                                    @*<li> @Html.ActionLink("Đăng tin free", "CreateTT", "QuanTri_ND","Area", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+                                }
+                                <li><a href="~/TinTuc/LienKet">Liên kết</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="title"><strong>Bản tin</strong></h4>
+                            <p>Tìm kiếm phòng trọ tuyệt vời hơn khi tới Nhà Trọ Xanh</p>
+                            <form class="newsletter">
+                                <input type="text" name="" placeholder="Nhập email để nhận tin mới nhất....">
+                                <input type="submit" value="Gữi" class="button">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-info">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Copyright © 2019. Designed by <a href="#">Hungdeptrai</a>. NYC is not forever</p>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="social-icon">
+                                <li><a href="https://www.instagram.com/?hl=vi" class="linkedin"></a></li>
+                                <li><a href="https://www.google.com.vn" class="google-plus"></a></li>
+                                <li><a href="https://twitter.com/" class="twitter"></a></li>
+                                <li><a href="https://www.facebook.com/" class="facebook"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- thêm môt số thư mục JavaScript,bootstrap,jquery==================================================-->
+    <script type="text/javascript" src="~/IndexLayout/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/jquery.sequence-min.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script defer src="~/IndexLayout/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/script.min.js"></script>
+</body>
+</html>

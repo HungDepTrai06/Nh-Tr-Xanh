@@ -1,0 +1,19 @@
+﻿@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+}
+<div class="list-group" style="margin-top:10px">
+    <a href="#" class="list-group-item active">
+        <span class="glyphicon glyphicon-list"></span> Loại Tin Tức
+    </a>
+    @foreach (var item in db.LOAITT.ToList())
+    {
+        <ul class="list-group-item">
+            <li class="list-group-item">
+                <a href="/TinTuc/Index?MaLoaiTT=@item.MALOAITT" style="color:darkred">
+                    @item.TENLOAITT <span class="badge" style="text-align:right"> @item.TINTUC.Count </span>
+                </a>
+            </li>
+        </ul>
+    }
+</div>

@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Huongdandangkithanhvien";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+
+}
+
+<div class="container">
+    <div style="text-align:center">
+        <p style="color:darkgreen; font-size:60px; font-weight:bold;font-family:serif"> Hướng dẫn đăng kí thành viên</p>
+    </div>
+    <div style="text-align:right">
+        <div>
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="products-details">
+                <div style="text-align:left">
+                    <p style="font-size:13px; line-height:normal">Bạn là <b style="font-weight:bold">chủ phòng trọ</b>, bạn muốn sang nhượng lại phòng trọ, bạn là người muốn tìm người ở ghép? Để đăng tin trên website <b style="font-weight:bold; color:green">nhatroxanh.com</b>, bạn cần <a href="~/Custommer/Register" style="color:red"><u>Đăng kí</u></a> tài khoản miễn phí 100%. Việc đăng ký rất đơn giản và nhanh chóng, bạn chỉ mất 2 phút để hoàn thành.</p>
+                    <br /><br />
+                    <div>
+                        <p style="font-size:13px;font-weight:bold ; line-height:normal">Bước 1: </p>
+                        <p style="font-size:13px; line-height:normal"> Vào trang chủ nhatroxanh.com, nhìn lên góc trên cùng bên phải bạn sẽ thấy nút <a href="~/Custommer/Register" style="color:red"><u>Đăng kí</u></a>, bấm vào đó nhé.</p>
+                        <p style="font-weight:bold ; line-height:normal">Bước 2: </p>
+                        <p style="font-size:13px;font-size:13px; line-height:normal"> Bạn điền các thông tin chính xác nhé, bao gồm <b style="font-style:italic">Tên đăng nhập, Mật khẩu, Email</b>  của bạn (bạn nhập email chính xác để xác thực tài khoản nhé), và cuối cùng là <b style="font-style:italic">Mã xác nhận</b>. Sau khi điền xong bạn bấm nút "<b style="font-weight:bold">Đăng ký tài khoản</b>" để hoàn tất việc đăng ký tài khoản trên hệ thống <b style="font-weight:bold; color:green">nhatroxanh.com</b></p>
+                        <p style="font-weight:bold ; line-height:normal">Bước 3: </p>
+                        <p style="font-size:13px;font-size:13px; line-height:normal"> Kiểm tra email và xác nhận trước khi đăng kí nhé. Chúc bạn thành công!</p>
+                    </div>
+                    <br />
+                    <div style="text-align:center">
+                        <img src="~/IndexLayout/images/mhc.jpg" />
+                    </div>
+                    <br /><br />
+                    <p style="font-size:13px; line-height:normal"> Sau khi bấm vào nút đăng kí, màn hình sẽ hiện ra  <b style="font-weight:bold">form đăng kí</b> như bên dưới, bạn hãy làm theo hướng dẫn nhé  <b style="font-style:italic">gmail, họ tên và sô điện thoại của bạn bắt buộc phải chính xác.</b></p>
+                    <br />
+                    <div style="text-align:center">
+                        <img src="~/IndexLayout/images/dangki.jpg" />
+                    </div>
+                    <br /><br />
+                    <p style="font-size:13px;font-weight:bold; text-shadow:1px 0px 3px black, 0px 1px 3px black, -1px 0px 3px black, 0px -1px 3px black; color:orange; font-size:15px">Để đăng kí-đăng tin nhanh chóng và hiệu quả vui lòng xem thêm:</p>
+                    <table class="table table-hover">
+                        <tr>
+                            <td width="40px" ; height="40px"><img src="~/IndexLayout/images/muiten.jpg" style="width:40px; height:30px" /></td>
+                            <td style="margin-left:auto"><a href="~/TinTuc/Huongdandangtin" style="font-size:25px; text-align:left; vertical-align:bottom ; color:orangered; font-family:serif"><u>Hướng dẫn đăng tin</u></a></td>
+                        </tr>
+                        <tr>
+                            <td width="40px" ; height="40px"><img src="~/IndexLayout/images/muiten.jpg" style="width:40px; height:30px" /></td>
+                            <td style="margin-left:auto"><a href="~/TinTuc/Huongdanquanlithongtin" style="font-size:25px; text-align:left; vertical-align:bottom ; color:orangered;font-family:serif"><u>Hướng dẫn quản lí thông tin cá nhân</u></a></td>
+                        </tr>
+                    </table>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"> </div>
+        @Html.Partial("_fooder_2")
+    </div>
+</div>

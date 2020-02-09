@@ -1,0 +1,102 @@
+﻿@model WebBanHang.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container container_fullwidth" style="text-align:center">
+        <div class="row" style="width:90%; padding-left:70px">
+            <div class="products-details">
+                <div class="alert alert-warning">
+
+                    <div style="text-align:left">
+
+                        <span style="color:forestgreen; font-size:16px">Thông tin chi tiết người dùng</span><br /><br />
+                        <span style="color:green; font-size:15px">Bạn có thể sửa thông tin cá nhân của người dùng nếu cần thiết</span>
+                    </div>
+                </div><br /><br />
+                <label style="text-align:center"> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</label>
+               
+                @Html.HiddenFor(model => model.MAND)
+                @Html.HiddenFor(model => model.LEVEL)
+                @Html.HiddenFor(model => model.MATKHAU)
+                <table class="table table-hover center-text">
+                    <tr>
+                        <td style="text-align:right">Email</td>
+                        <td style="text-align:left">
+                            @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Họ tên </td>
+                        <td style="text-align:left">
+                            @Html.EditorFor(model => model.HOTENND, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.HOTENND, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Giới Tính</td>
+                        <td style="text-align:left">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.GIOITINH) Nam (Nếu là nữ thì để trống)
+                                @Html.ValidationMessageFor(model => model.GIOITINH, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Số điện thoại 1</td>
+                        <td style="text-align:left">
+                            @Html.EditorFor(model => model.SDT1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SDT1, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Số điện thoại 2</td>
+                        <td style="text-align:left">
+                            @Html.EditorFor(model => model.SDT2, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SDT2, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    @*<tr>
+                        <td style="text-align:right">Cấp quyền</td>
+                        <td style="text-align:left">
+                            @Html.EditorFor(model => model.LEVEL, new { htmlAttributes = new { @class = "form-control" } }) 
+                            @Html.ValidationMessageFor(model => model.LEVEL, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>*@
+                    <tr>
+                        <td style="text-align:right">Mật khẫu cũ</td>
+                        <td style="text-align:left">
+                            @Html.EditorFor(model => model.MATKHAU, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right"></td>
+                        <td style="text-align:left; color:orangered">
+                            Mật khẫu cũ đã mã hóa, nếu bạn muốn đổi mật khẫu mới hãy nhập vào ô bên dưới, nếu không muốn đổi thì để trống<br />
+                            Mật khẫu mới phải có ít nhất 6 ký tự
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Đổi mật khẫu mới</td>
+                        <td style="text-align:left">
+                            <input type="text" id="MKM" name="MKM" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:left">
+                            <input type="submit" value="Cập nhật" class="btn btn-success" onclick="return confirm('Bạn có chắc chắn muốn cập nhật lại không???')" /> @*| <a href="~/Area/NGUOIDUNGs/DoiMatKhau?id=@Model.MAND" class="btn btn-info" style="color:blueviolet">Đổi mật khẫu</a>*@  |   @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+}

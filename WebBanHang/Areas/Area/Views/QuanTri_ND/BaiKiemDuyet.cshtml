@@ -1,0 +1,75 @@
+﻿@model PagedList.IPagedList<WebBanHang.Models.TINTUC>
+@using PagedList.Mvc
+@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+    ViewBag.Title = "Bài chờ kiểm duyệt";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="row">
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-danger"><h5 style="color:orangered">Bạn không có bài đăng hay tin tức nào chờ kiểm duyệt</h5></div><hr />
+    }
+    else
+    {
+        <div class="alert alert-success"> <h5 style="color:palevioletred">Số bài chờ kiểm duyệt của bạn là:  @ViewBag.SoBaiDang </h5></div><br />
+    }
+    <br />
+    <table class="table table-bordered" style="text-align:center; vertical-align: middle; width:100%; align-content:center; padding-left:10px">
+        <tr style="color:darkorange; font-size:15px">
+            <th style="text-align:center; vertical-align: baseline"></th>
+            <th style="text-align:center; vertical-align: baseline">Mã bài đăng</th>
+            <th style="text-align:center; vertical-align: baseline">Người đăng</th>
+            <th style="text-align:center; vertical-align: baseline">Hình ảnh</th>
+            <th style="text-align:center; vertical-align: baseline">Địa chỉ</th>
+            <th style="text-align:center; vertical-align: baseline">Ngày đăng</th>
+            <th style="text-align:center; vertical-align: baseline">Giá tiền</th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center; vertical-align: middle;font-size:14px">
+                <td style="text-align:center; vertical-align: middle">
+                    <a style="color:green" href="~/Area/QuanTri_ND/KiemDuyet/@item.ID_TinTuc">Thông tin</a>
+                    <a style="color:red" href="~/Area/QuanTri_ND/DeleteTT/@item.ID_TinTuc">Xóa</a><br />
+                    @if (item.TRANGTHAI == true)
+                    {
+                        <img src="~/IndexLayout/images/tickXanh.png" style="width:30px; height:30px" />
+                    }
+                    else
+                    {
+                        <img src="~/IndexLayout/images/tickDo.png" style="width:30px; height:30px" />
+                    }
+                </td>
+
+                <td style="text-align:center; vertical-align: middle">
+                    <b> @item.ID_TinTuc</b>
+                </td>
+                <td style="text-align:center; vertical-align: middle; color:darkcyan">
+                    <a href="~/Area/NGUOIDUNGs/DSTINND?id=@item.NGUOIDUNG.MAND"><u> @item.NGUOIDUNG.HOTENND</u></a>
+                </td>
+
+                <td style="text-align:center; vertical-align: middle">
+                    @foreach (var ha in db.DSANH.Where(x => x.ID_TINTUC == item.ID_TinTuc).ToList().Take(1))
+                    {
+                        <img src="~/IndexLayout/images/imagePhongNha/@ha.DUONGDAN" style="width: 80px; height: 70px" /><br />
+
+                    }
+                    <a href="~/Area/DSANHs/Index?id=@item.ID_TinTuc" style="color:blue">Quản lý</a>
+                </td>
+                <td style="text-align:right; vertical-align: middle">
+                    @item.DIACHITT
+                </td>
+                <td style="text-align:center; vertical-align: middle; color:forestgreen"> @(item.NGAYDT.ToShortDateString())</td>
+                <td style="text-align:center; vertical-align: middle; color:darkred"> @string.Format("{0:#,##0,000}", item.GIATIEN) VNĐ</td>
+            </tr>
+        }
+    </table><br />
+</div>
+<div class="row text-center" style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+
+
+

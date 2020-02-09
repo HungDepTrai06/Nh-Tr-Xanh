@@ -1,0 +1,60 @@
+﻿@model WebBanHang.Models.DSANH
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+@using (Html.BeginForm("Edit", "DSANHs", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="alert alert-info">
+            <span style="font-size:16px">
+                Thay đổi hình ảnh trong nếu bạn cảm thấy không phù hợp
+            </span><br /><br />
+            <span style="font-size:14px">
+                Bạn nên chọn hình ảnh đúng với tin tức, bài đăng của bạn
+            </span>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_ANH)
+        @Html.HiddenFor(model => model.ID_TINTUC)
+        <div class="col-md-12">
+            <div class="col-md-5">
+
+                <img src="~/IndexLayout/images/imagePhongNha/@Model.DUONGDAN" style="width:500px; height:300px" /><br />
+                <lable style="color:orangered; font-size:15px">Hình cũ </lable><br />
+            </div>
+            <div class="col-md-7">
+                <div class="form-group">
+                    <lable style="color:forestgreen; font-size:15px">
+                        Chọn hình mới:
+                    </lable><br /><br />
+                    <input type="file" class="form-control" name="DUONGDAN" id="DUONGDAN" /><br />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Cập nhật" class="btn btn-success" id="btn"/>
+                        @*<input type="button" id="btn" value="Show Alert" />*@
+                        <script language="javascript">
+                            var button = document.getElementById("btn");
+                            button.onclick = function () {
+                                alert("Thay đổi hình ảnh thành công");
+                            }
+                        </script>
+                        | @Html.ActionLink("Trở về", "Index", new { id = Model.ID_TINTUC }, new { @class = "btn btn-info" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="form-group">
+                <img src="~/IndexLayout/images/imagePhongNha/@Model.DUONGDAN" width="200" height="150" />
+            </div>
+            <div class="form-group">
+                <input type="file" class="form-control" name="DUONGDAN" id="DUONGDAN" />
+            </div>*@
+
+    </div>
+}

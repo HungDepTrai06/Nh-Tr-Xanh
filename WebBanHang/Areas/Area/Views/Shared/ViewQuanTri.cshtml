@@ -1,0 +1,214 @@
+﻿@using WebBanHang.Models
+@{
+    Layout = null;
+    NGUOIDUNG nd = (NGUOIDUNG)Session["KhachHang"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chào mừng tới Nhà trọ xanh</title>
+    <link href="~/IndexLayout/css/bootstrap.css" rel="stylesheet">
+    <link href="~/IndexLayout/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/IndexLayout/css/flexslider.css" type="text/css" media="screen" />
+    <link href="~/IndexLayout/css/sequence-looptheme.css" rel="stylesheet" media="all" />
+    <link href="~/IndexLayout/css/style.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="~/Areas/Content/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <link type="text/css" href="~/IndexLayout/css/slideshow.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2">
+                        <div class="logo">
+                            <a href="~/TinTuc/Index"><img src="~/IndexLayout/images/LoGo.jpg" style="width:100px; height:80px" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="header_top">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="topmenu">
+                                        <li><a href="#">Xin chào - @nd.HOTENND</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                        <div class="header_bottom">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">
+                                        Chuyển hướng
+                                    </span>
+                                    <span class="icon-bar">
+                                    </span>
+                                    <span class="icon-bar">
+                                    </span>
+                                    <span class="icon-bar">
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse">
+                                @if (nd.LEVEL == 1)
+                                {
+                                    <ul class="nav navbar-nav">
+                                        <li class="active dropdown">
+                                            <a href="~/Area/QuanTri_ND/Index" class="dropdown-toggle" data-toggle="dropdown">Thông tin cá nhân</a>
+                                            <div class="dropdown-menu">
+                                                <ul class="mega-menu-links">
+                                                    <li><a href="~/Area/QuanTri_ND/SuaThongTin?id=@nd.MAND">Thông tin</a></li>
+                                                    <li><a href="~/Custommer/LogOff/Index">Đăng xuất</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="~/Area/QuanTri_ND/Index" class="dropdown-toggle" data-toggle="dropdown">Quản lý bài đăng</a>
+                                            <div class="dropdown-menu mega-menu">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-12">
+                                                        <ul class="mega-menu-links">
+                                                            <li><a href="~/Area/QuanTri_ND/Index">Bài đã đăng</a></li>
+                                                            <li><a href="~/Area/QuanTri_ND/BaiChoKD">Bài chờ kiểm duyệt</a></li>
+
+                                                            <li><a href="/Area/QuanTri_ND/CreateTT">Đăng bài mới</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><a href="/Area/QuanTri_ND/CreateTT">Đăng bài</a></li>
+                                        <li><a href="/TinTuc/HuongDan">Hướng dẫn</a></li>
+                                        <li><a href="/TinTuc/LienKet">Liên kết</a></li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <ul class="nav navbar-nav">
+                                        <li class="active dropdown">
+                                            <a href="~/Area/QuanTri_ND/Index" class="dropdown-toggle" data-toggle="dropdown">Quản lý tài khoản</a>
+                                            <div class="dropdown-menu">
+                                                <ul class="mega-menu-links">
+                                                    <li><a href="~/Area/NGUOIDUNGs/Index">Danh sách người dùng</a></li>
+                                                    <li><a href="~/Custommer/LogOff/Index">Đăng xuất</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="~/Area/QuanTri_ND/Index" class="dropdown-toggle" data-toggle="dropdown">Quản lý bài đăng</a>
+                                            <div class="dropdown-menu mega-menu">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-12">
+                                                        <ul class="mega-menu-links">
+                                                            <li><a href="~/Area/QuanTri_ND/Index">Đã được duyệt</a></li>
+                                                            <li><a href="~/Area/QuanTri_ND/BaiKiemDuyet">Chờ kiểm duyệt</a></li>
+                                                            <li><a href="/Area/QuanTri_ND/CreateTT">Đăng bài mới</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><a href="/Area/QuanTri_ND/CreateTT">Đăng bài</a></li>
+                                        <li><a href="~/Area/LOAITTs/Index">Loại Tin</a></li>
+                                        <li><a href="~/Area/QuanTri_ND/AllHinh">Hình ảnh</a></li>
+                                        <li><a href="~/Area/QuanTri_ND/ThongKe">Thống kê</a></li>
+                                    </ul>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+            </div>
+            <div class="page-index">
+                <div class="container">
+                    <p>
+                        Quản lý website
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+        <div class="container_fullwidth">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+        <div class="footer">
+            <div class="footer-info">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="footer-logo"><a href="~/TinTuc/Index"><img src="~/IndexLayout/images/LoGo.jpg" style="width:120px; height:100px" /></a></div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <h4 class="title">Liên Hệ <strong>Với chúng tôi</strong></h4>
+                            <p>Adress: 252 Lý Chính Thắng - P.7 - Q.3 - TP HCM</p>
+                            <p>Call Us : (084) 1900 0099</p>
+                            <p>Email : yuukahung@gmail.com</p>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <h4 class="title">Khách hàng</h4>
+                            <ul class="support">
+                                <li> @Html.ActionLink("Đăng ký", "Register", "Custommer", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                <li> @Html.ActionLink("Đăng nhập", "Login", "Custommer", routeValues: null, htmlAttributes: new { id = "registerLink" })</a></li>
+                                <li><a href="~/Area/QuanTri_ND/CreateTT" id="registerLink">Đăng tin free</a></li>
+                                <li><a href="~/TinTuc/LienKet">Liên kết</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h4 class="title"><strong>Bản tin</strong></h4>
+                            <p>Tìm kiếm phòng trọ tuyệt vời hơn khi tới Nhà Trọ Xanh</p>
+                            <form class="newsletter">
+                                <input type="text" name="" placeholder="Nhập email để nhận tin mới nhất....">
+                                <input type="submit" value="Gữi" class="button">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-info">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Copyright © 2019. Designed by <a href="#">Hungdeptrai</a>. NYC is not forever</p>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="social-icon">
+                                <li><a href="https://www.instagram.com/?hl=vi" class="linkedin"></a></li>
+                                <li><a href="https://www.google.com.vn" class="google-plus"></a></li>
+                                <li><a href="https://twitter.com/" class="twitter"></a></li>
+                                <li><a href="https://www.facebook.com/" class="facebook"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript==================================================-->
+    <script type="text/javascript" src="~/IndexLayout/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/jquery.sequence-min.js"></script>
+    <script type="text/javascript" src="~/IndexLayout/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script defer src="~/IndexLayout/js/jquery.flexslider.js"></script>
+
+    <script src="~/Areas/Content/ckeditor/ckeditor.js"></script>
+
+    <script type="text/javascript" src="~/IndexLayout/js/script.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    
+    @Scripts.Render("~/bundles/jqueryval")
+</body>
+</html>

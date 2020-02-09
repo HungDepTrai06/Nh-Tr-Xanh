@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "LienKet";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+
+<div class="clearfix">
+</div>
+<div class="container">
+    <div style="text-align:left">
+        <p style="color:darkgreen; font-size:60px; font-weight:bold;font-family:serif">Liên kết</p>
+    </div>
+    <div style="text-align:right">
+        <div>
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <p style="font-size:15px; line-height:normal;text-shadow:1px 0px 3px black, 0px 1px 3px coral, -1px 0px 3px black, 0px -1px 3px black; color:orange">Website của chúng tôi luôn liên kế với trường đại học cao đẳng trong khu vực TP. Hồ Chí Minh</p>
+            <br /><br>
+
+            <div class="col-md-12" style="width:90%; text-align:center">
+                <table class="table table-hover" border="1" style="border-color:brown">
+                    <tr style="padding-left:10px; padding-top:10px">
+                        <td class="col-md-2">
+                            <div id="productsDetails" class="hot-products">
+                                <label style="color:forestgreen" class="title"> <a href="https://www.hutech.edu.vn" style="color:blue; font-weight:bold">Trường Đại học công nghệ Hutech</a></label>
+                                <img style="width:300px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo1.jpg" />
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <div id="productsDetails" class="hot-products">
+                                <label style="color:forestgreen" class="title">
+                                    <a href="https://www.vnu.edu.vn/home/" style="color:blue; font-weight:bold">Trường Đại học quốc gia</a>
+                                </label>
+                                <img style="width:300px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo2.jpg" />
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="padding-left:10px; padding-top:10px">
+                        <td class="col-md-2">
+                            <div id="productsDetails" class="hot-products">
+                                <label style="color:forestgreen" class="title"> <a href="http://www.caothang.edu.vn/" style="color:blue; font-weight:bold">Trường Cao đẳng Kĩ thuật Cao Thắng</a></label>
+                                <img style="width:300px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo3.jpg" />
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <div id="productsDetails" class="hot-products">
+                                <label style="color:forestgreen" class="title">
+                                    <a href="http://www.hcmct.edu.vn/" style="color:blue; font-weight:bold">Trường cao đẳng Giao Thông Vận Tải TP.Hồ Chí Minh</a>
+                                </label>
+                                <img style="width:300px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo4.jpg" />
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="padding-left:10px; padding-top:10px">
+                        <td class="col-md-2">
+                            <div id="productsDetails" class="hot-products">
+                                <label style="color:forestgreen" class="title"> <a href="https://www.hoasen.edu.vn/vi" style="color:blue; font-weight:bold">Trường đại học Hoa Sen</a></label>
+                                <img style="width:300px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo5.jpg" />
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <div id="productsDetails" class="hot-products">
+                                <label style="color:forestgreen" class="title">
+                                    <a href="http://ntt.edu.vn/web//" style="color:blue; font-weight:bold">Trường đại học Nguyễn Tất Thành</a>
+                                </label>
+                                <img style="width:300px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo6.jpg" />
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="padding-left:10px; padding-top:10px">
+                        <td class="col-md-2">
+                            <div id="productsDetails" class="hot-products">
+                                <label style="color:forestgreen" class="title"> <a href="https://www.uef.edu.vn/" style="color:blue; font-weight:bold">Trường đại học Kinh tế tài chính</a></label>
+                                <img style="width:300px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo7.jpg" />
+                            </div>
+                        </td>
+                        <td class="col-md-2">
+                            <div id="productsDetails" class="hot-products">
+                                <label style="color:forestgreen" class="title">
+                                    <a href="http://www.hcmuaf.edu.vn/" style="color:blue; font-weight:bold">Trường đại học Nông lâm TP.Hồ Chí Minh</a>
+                                </label>
+                                <img style="width:300px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo8.jpg" />
+
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            @*<div id="productsDetails" class="hot-products">
+            <p style="font-size:15px; line-height:normal;text-shadow:1px 0px 3px black, 0px 1px 3px coral, -1px 0px 3px black, 0px -1px 3px black; color:orange">Website của chúng tôi luôn liên kế với trường đại học cao đẳng trong khu vự TP. Hồ Chí Minh</p>
+            <br /><br>
+            <label style="color:forestgreen" class="title">
+                <img style="width:200px; height:200px; outline-color:aquamarine;" src="~/IndexLayout/images/logo1.jpg" /><br />
+                <a href="https://www.hutech.edu.vn">Trường Đại học công nghệ Hutech</a>
+            </label>
+        </div>*@
+            <div class="clearfix"> </div>
+            @Html.Partial("_fooder_2")
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@model WebBanHang.Models.LOAITT
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LOAITT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENLOAITT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENLOAITT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MALOAITT }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

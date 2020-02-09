@@ -1,0 +1,86 @@
+﻿@model WebBanHang.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container container_fullwidth" style="text-align:center">
+        <div class="row" style="width:90%; padding-left:70px">
+            <div class="products-details">
+                <h5 style="color:red">Bạn chắc chắn muốn xóa người dùng @Model.HOTENND</h5><br />
+                <div style="text-align:left">
+                    @Html.ActionLink("Trở về", "Index", new { @class = "btn btn-default" })
+                </div><br /><br />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MAND)
+                <table class="table table-hover center-text">
+                    <tr>
+                        <td style="text-align:right">Email</td>
+                        <td style="text-align:left">
+                            @Html.DisplayFor(model => model.EMAIL)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Họ tên </td>
+                        <td style="text-align:left">
+                            @Html.DisplayFor(model => model.HOTENND)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Giới Tính</td>
+                        <td style="text-align:left">
+                            @if (Model.GIOITINH)
+                            {
+                                <label style="color:deepskyblue">Nam</label>
+                            }
+                            else
+                            {
+                                <label style="color:orangered">Nữ</label>
+                            }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Số điện thoại 1</td>
+                        <td style="text-align:left">
+                            @Html.DisplayFor(model => model.SDT1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Số điện thoại 2</td>
+                        <td style="text-align:left">
+                            @Html.DisplayFor(model => model.SDT2)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Cấp bậc</td>
+                        <td style="text-align:left">
+                            @if (Model.LEVEL != 1)
+                            {
+                                <label style="color:deepskyblue">Admin</label>
+                            }
+                            else
+                            {
+                                <label style="color:orangered">Thành viên</label>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:left">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Xóa" class="btn btn-danger" />
+                            }
+                            @Html.ActionLink("Trở về", "Index")
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+}

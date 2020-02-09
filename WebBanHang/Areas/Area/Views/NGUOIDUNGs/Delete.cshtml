@@ -1,0 +1,47 @@
+﻿@model WebBanHang.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="alert alert-info"><h4>Xác nhận thông tin người dùng @Html.DisplayFor(model => model.HOTENND)</h4></div>
+    <hr class="border" />
+    <div class="container_fullwidth">
+        <label style="text-align:center"> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</label>
+        <div class="col-md-5">
+            <table class="table shop-table">
+                <tr>
+                    <td style="color:forestgreen; vertical-align:middle">Họ tên</td>
+                    <td style="color:blue; vertical-align:middle">@Html.DisplayFor(model => model.HOTENND)</td>
+                </tr>
+                <tr>
+                    <td style="color:forestgreen; vertical-align:middle">Email</td>
+                    <td style="color:red; vertical-align:middle">@Html.DisplayFor(model => model.EMAIL)</td>
+                </tr>
+                <tr>
+                    <td style="color:forestgreen; vertical-align:middle">Số điện thoại</td>
+                    <td>@Html.DisplayFor(model => model.SDT1) <br /> @Html.DisplayFor(x => x.SDT2)</td>
+                </tr>
+                <tr>
+                    <td style="color:forestgreen; vertical-align:middle">Tổng số bài đăng</td>
+                    <td style="color:blue; vertical-align:middle"><b>@ViewBag.SoBaiDang</b></td>
+                </tr>
+                <tr>
+                    <td style="color:forestgreen; vertical-align:middle">Cấp bặc</td>
+                    <td style="color:deeppink; vertical-align:middle">@ViewBag.CapBac</td>
+                </tr>
+            </table>
+        </div>
+        <div class="alert alert-danger col-md-7">
+
+            <h5 style="color:red"><i>Khi xóa người dùng này những tin tức, bài đăng, hình ảnh của người dùng này củng sẽ bị xóa <br /><br /> Bạn có thực sự muốn xóa ???</i></h5><br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Xóa Người Dùng" class="btn btn-danger" onclick="return confirm('Chúng tôi sẽ xóa người dùng này, bạn chắc chắn muốn xóa !!!')"/> |
+                    @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+                </div>
+            }
+        </div>
+    </div>

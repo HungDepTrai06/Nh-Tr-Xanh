@@ -1,0 +1,161 @@
+﻿@model PagedList.IPagedList<WebBanHang.Models.TINTUC>
+@using PagedList.Mvc
+@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+    var nd = (NGUOIDUNG)Session["KhachHang"];
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Area/Views/Shared/AdminViewQuanTri.cshtml";
+}
+
+<div class="container_fullwidth">
+    <div class="container">
+        <div class="row">
+            <span style="color:forestgreen; font-size:15px">Chào admin, chúc bạn có một ngày làm việc tốt đẹp <br />Dưới đây là danh sách tất cả các bài đã được duyệt và đăng lên website của chúng ta</span><br /><hr />            
+            <div class="col-md-12">
+                <div class="checkout-page alert alert-success">
+                    <div class="col-md-10">
+                        @using (Html.BeginForm())
+                        {
+                            <label style="color:orangered">Tìm kiếm tin tức theo tên quận, tên đường, phường, nội dung.....</label><br /><br />
+                            <input type="text" placeholder="Nhập thông tin muốn tìm kiếm..." name="keySearch" style="width:500px" />
+                            <input type="submit" value="Tìm kiếm" class="btn btn-success" style="text-align:center" /> <hr />
+
+                        }
+                    </div>
+                    <div class="col-md-12">
+                        <h6 style="color:orangered">Lọc tin tức theo danh mục</h6><br />
+                        <div class="col-md-4">
+                            @using (Html.BeginForm())
+                            {
+                                <div style="color:brown; font-size:15px">
+                                    <select style="width: 200px; border-bottom-style: inset; color:darkred" name="MaLoaiTT">
+                                        <a href="#"> <option value="">Lọc theo loại</option></a>
+
+                                        @foreach (var loai in db.LOAITT.ToList())
+                                        {
+                                            <a href="~/Area/QuanTri_ND/AdminIndex?MaHuyen=@loai.MALOAITT"> <option value=@loai.MALOAITT>@loai.TENLOAITT</option></a>
+                                        }
+                                    </select>
+                                    <input type="submit" value="Lọc" class="btn btn-success" />
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            @using (Html.BeginForm())
+                            {
+                                <div style="color:brown; font-size:15px">
+                                    <select style="width: 200px; border-bottom-style: inset; color:darkred" name="MaHuyen">
+                                        <a href="#"> <option value="">Lọc theo quận</option></a>
+                                        @foreach (var huyen in db.HUYENQUAN.ToList())
+                                        {
+                                            <a href="~/Area/QuanTri_ND/AdminIndex?MaHuyen=@huyen.MAHUYEN"> <option value=@huyen.MAHUYEN>@huyen.TENHUYEN</option></a>
+                                        }
+                                    </select>
+                                    <input type="submit" value="Lọc" class="btn btn-success" />
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            @using (Html.BeginForm())
+                            {
+                                <div style="color:brown; font-size:15px">
+                                    <select style="width: 200px; border-bottom-style: inset; color:darkred" name="IDGia">
+                                        <a href="#"> <option value="">Lọc theo giá tiền</option></a>
+                                        <a href="~/Area/QuanTri_ND/AdminIndex?IDGia=1"> <option value=1>Dưới 2 tr</option></a>
+                                        <a href="~/Area/QuanTri_ND/AdminIndex?IDGia=2"> <option value=2>Từ 2 tr đến 3 tr</option></a>
+                                        <a href="~/Area/QuanTri_ND/AdminIndex?IDGia=3"> <option value=3>Từ 3 tr đến 4 tr</option></a>
+                                        <a href="~/Area/QuanTri_ND/AdminIndex?IDGia=4"> <option value=4>Từ 4 tr đến 5 tr</option></a>
+                                        <a href="~/Area/QuanTri_ND/AdminIndex?IDGia=5"> <option value=5>Trên 5 tr</option></a>
+                                    </select>
+                                    <input type="submit" value="Lọc" class="btn btn-success" />
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-12">
+
+                @if (Model != null)
+                {
+                    if (Model.Count == 0)
+                    {
+                        <div class="alert alert-danger">
+                            Không tìm thấy tin tức hoặc bài đăng nào
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            <h4 style="color:yellow; text-align:center; text-shadow:1px 0px 3px green, 0px 1px 3px red">@ViewBag.tieude</h4>
+                        </div>
+                        <table class="table table-bordered" style="text-align:center; vertical-align: middle; width:100%; align-content:center; padding-left:10px">
+                            <tr style="color:darkorange; font-size:15px">
+                                <th style="text-align:center; vertical-align: baseline"></th>
+                                <th style="text-align:center; vertical-align: baseline">Mã bài đăng</th>
+                                <th style="text-align:center; vertical-align: baseline">Người Đăng</th>
+                                <th style="text-align:center; vertical-align: baseline">Hình ảnh</th>
+                                <th style="text-align:center; vertical-align: baseline">Địa chỉ</th>
+                                <th style="text-align:center; vertical-align: baseline">Ngày đăng</th>
+                                <th style="text-align:center; vertical-align: baseline">Giá tiền</th>
+
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr style="text-align:center; vertical-align: middle;font-size:14px">
+                                    <td style="text-align:center; vertical-align: middle">
+                                        <a style="color:green" href="~/Area/QuanTri_ND/EditTT/@item.ID_TinTuc">Sữa</a>
+                                        <a style="color:red" href="~/Area/QuanTri_ND/DeleteTT/@item.ID_TinTuc">Xóa</a><br />
+                                        @if (item.TRANGTHAI == true)
+                                        {
+                                            <img src="~/IndexLayout/images/tickXanh.png" style="width:30px; height:30px" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/IndexLayout/images/tickDo.png" style="width:30px; height:30px" />
+                                        }
+                                    </td>
+                                    <td style="text-align:center; vertical-align: middle">
+                                        @item.ID_TinTuc
+                                    </td>
+                                    <td style="text-align:left; vertical-align: middle">
+                                        @item.NGUOIDUNG.HOTENND<br />
+                                    </td>
+                                    <td style="text-align:center; vertical-align: middle">
+                                        @foreach (var ha in db.DSANH.Where(x => x.ID_TINTUC == item.ID_TinTuc).ToList().Take(1))
+                                        {
+                                            <img src="~/IndexLayout/images/imagePhongNha/@ha.DUONGDAN" style="width: 80px; height: 70px" /><br />
+
+                                        }
+                                        <a href="~/Area/DSANHs/Index?id=@item.ID_TinTuc" style="color:blue">Quản lý</a>
+                                    </td>
+                                    <td style="text-align:right; vertical-align: middle">
+                                        @item.DIACHITT
+                                    </td>
+                                    <td style="text-align:center; vertical-align: middle; color:forestgreen"> @(item.NGAYDT.ToShortDateString())</td>
+                                    <td style="text-align:center; vertical-align: middle; color:darkmagenta"> @string.Format("{0:#,##0,000}", item.GIATIEN) VNĐ</td>
+                                </tr>
+                            }
+                        </table><br />
+                    }
+                }
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="row text-center">
+        @Html.PagedListPager(Model, page => Url.Action("AdminIndex", new { page, MaLoaiTT = ViewBag.MaLoaiTT, MaHuyen = ViewBag.MaHuyen, keySearch = ViewBag.keySearch, IDGia = ViewBag.IDGia }))
+    </div>
+    <div class="clearfix"></div>
+
+</div>
+
+
+

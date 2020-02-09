@@ -1,0 +1,79 @@
+﻿@model WebBanHang.Models.CustomerLoginView
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="container_fullwidth" style="width:100%; padding-left:100px">
+    <div class="row">
+        @*<div class="col-md-11">
+            <img src="~/IndexLayout/images/imagePhongNha/bg-1.jpg" style="width:100%; height:300px" />
+        </div>*@
+        <div class="col-md-11">
+            <div class="checkout-page">
+                <ol class="checkout-steps">
+                    <li class="steps active">
+                        <div class="step-description" style="background-color:aquamarine">
+                            <p style="color:green; font-size:15px">Nếu bạn có phòng hày nhà muốn cho thuê hãy đăng nhập và đăng tin trên website của chúng tôi, tất cả đều <label style="color:red">miễn phí 100%</label></p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-md-7" style="align-content:center">
+            <ol class="checkout-steps">
+                <li class="steps active">
+                    <a href="#" class="step-title" style="text-align:center;background-color:aquamarine; font-weight:bold; text-shadow:1px 0px 3px green, 0px 1px 3px green, -1px 0px 3px black, 0px -1px 3px black;color:aqua; text-align:center"> Đăng nhập </a>
+                    <div class="step-description">
+                        <label style="text-align:center"> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</label>
+                        <table class="table">
+                            <tr>
+                                <td>Email</td>
+                                <td>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Mật khẫu</td>
+                                <td>
+                                    @Html.PasswordFor(model => model.MATKHAU, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="submit" value="Đăng nhập" class="button twitter" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-4">
+            <div class="checkout-page">
+                <ol class="checkout-steps">
+                    <li class="steps active">
+                        <a href="#" class="step-title" style="text-align:center;font-weight:bold; text-shadow:1px 0px 3px green, 0px 1px 3px green, -1px 0px 3px black, 0px -1px 3px black;color:greenyellow;">Hướng dẫn đăng nhập </a>
+                        <div class="step-description">
+                            <P style="color:green; font-size:15px">Bạn hãy nhập email và mật khẫu đã đăng ký để đăng nhập vào website của chúng tôi</P> <br />
+                            <P style="color:blue">
+                                Nếu bạn chưa có tài khoản hãy <a href="~/Custommer/Register" class="reg btn btn-info" > đăng ký tại đây.</a>
+                            </P> <br />
+                            <br /> <a class="button wishlist" href="~/TinTuc/Index">Trở về trang chủ</a> @*@Html.ActionLink("Trở về trang chủ", "Index", "TinTuc", new { @class = "button wishlist" })*@
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        @Html.Partial("_fooder_2")
+    </div> 
+</div>
+  }
+
+

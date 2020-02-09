@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "HuongDan";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+
+<div class="clearfix">
+</div>
+<div class="container">
+    <div style="text-align:left">
+        <p style="color:darkgreen; font-size:60px; font-weight:bold;font-family:serif"> Hướng dẫn sử dụng</p>
+    </div>
+    <div style="text-align:right">
+        <div>
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="products-details">
+                <div style="text-align:left">
+                    <p style="font-size:13px; line-height:normal">Chào bạn, lời nói đầu tiên chúng tôi xin cảm ơn các bạn đã tin tưởng và sử dụng website <b style="font-weight:bold; color:green">nhatroxanh.com</b>. Hiện nay việc tìm kiếm phòng trọ đã trở nên đơn giản hơn bao giờ hết lượng truy cập hàng ngày rất lớn,<b style="font-style:italic"> giải quyết nhu cầu cho thuê của rất nhiều chủ phòng trọ cũng như giúp những người đi tìm phòng trọ, ở ghép một cách nhanh nhất có thể.</b></p>
+                    <p style="font-size:13px; line-height:normal"> Website cho phép người dùng có thể đăng tin và tìm kiếm phòng trọ miễn phí chỉ cần click chuột bạn có thể dễ dàng thực hiện các thao tác.</p>
+                    <p style="font-size:13px; line-height:normal"> Website <b style="font-weight:bold; color:green">nhatroxanh.com</b> được thực hiện bởi các bạn sinh viên nên trong quá trình sử dụng có thể phát sinh ra lỗi, mong các bạn sẽ phản hồi để chúng tôi phát triển website tốt hơn. </p>
+                    <div class="clearfix"></div>
+                    <br /><br />
+                    <table class="table table-hover">
+                        <tr>
+                            <td width="90px" ; height="90px"><img src="~/IndexLayout/images/muiten.jpg" style="width:80px; height:70px" /></td>
+                            <td style="margin-left:auto"><a href="~/TinTuc/Huongdandangkithanhvien" style="font-size:30px; text-align:left; vertical-align:bottom; color:orangered; font-family:serif"><u>Hướng dẫn đăng kí thành viên</u></a></td>
+                        </tr>
+                        <tr>
+                            <td width="90px" ; height="90px"><img src="~/IndexLayout/images/muiten.jpg" style="width:80px; height:70px" /></td>
+                            <td style="margin-left:auto"><a href="~/TinTuc/Huongdandangtin" style="font-size:30px; text-align:left; vertical-align:bottom ; color:orangered; font-family:serif"><u>Hướng dẫn đăng tin</u></a></td>
+                        </tr>
+                        <tr>
+                            <td width="90px" ; height="90px"><img src="~/IndexLayout/images/muiten.jpg" style="width:80px; height:70px" /></td>
+                            <td style="margin-left:auto"><a href="~/TinTuc/Huongdanquanlithongtin" style="font-size:30px; text-align:left; vertical-align:bottom ; color:orangered;font-family:serif"><u>Hướng dẫn quản lí thông tin cá nhân</u></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <br /><br />
+        <p style="font-size:13px;font-weight:bold; text-shadow:1px 0px 3px black, 0px 1px 3px black, -1px 0px 3px black, 0px -1px 3px black; color:orange; font-size:15px">Để đăng kí-đăng tin nhanh chóng và hiệu quả vui lòng xem thêm:</p>
+        <table class="table table-hover">
+            <tr>
+                <td width="40px" ; height="40px"><img src="~/IndexLayout/images/muiten.jpg" style="width:40px; height:30px" /></td>
+                <td style="margin-left:auto"><a href="~/TinTuc/Huongdandangtin" style="font-size:25px; text-align:left; vertical-align:bottom ; color:orangered; font-family:serif"><u>Hướng dẫn đăng tin</u></a></td>
+            </tr>
+            <tr>
+                <td width="40px" ; height="40px"><img src="~/IndexLayout/images/muiten.jpg" style="width:40px; height:30px" /></td>
+                <td style="margin-left:auto"><a href="~/TinTuc/Huongdanquanlithongtin" style="font-size:25px; text-align:left; vertical-align:bottom ; color:orangered;font-family:serif"><u>Hướng dẫn quản lí thông tin cá nhân</u></a></td>
+            </tr>
+        </table>
+        <br /><br />
+        <div class="clearfix"> </div>
+        @Html.Partial("_fooder_2")
+    </div>
+</div>
+

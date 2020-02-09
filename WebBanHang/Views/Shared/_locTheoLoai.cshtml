@@ -1,0 +1,18 @@
+﻿@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+}
+@using (Html.BeginForm("Index", "TinTuc"))
+{
+<div style="color:brown; font-size:15px">
+    <select style="width: 150px; border-bottom-style: inset; color:darkred" name="MaLoaiTT">
+        <a href="#"> <option value="">Chọn loại tin</option></a>
+
+        @foreach (var loai in db.LOAITT.ToList())
+        {
+            <a href="~/TinTuc/Index?MaHuyen=@loai.MALOAITT"> <option value=@loai.MALOAITT>@loai.TENLOAITT</option></a>
+        }
+    </select>
+    <input type="submit" value="Lọc" class="btn btn-success" />
+</div>
+}

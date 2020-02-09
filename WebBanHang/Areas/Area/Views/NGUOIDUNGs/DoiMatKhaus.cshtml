@@ -1,0 +1,50 @@
+﻿@model WebBanHang.Models.NGUOIDUNG
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container container_fullwidth" style="text-align:center">
+        <div class="row" style="width:90%; padding-left:70px">
+            <div class="products-details">
+                <div class="alert alert-warning">
+
+                    <div style="text-align:left">
+                        <span style="color:forestgreen; font-size:16px">Đổi mật khẫu người dùng</span><br /><br />
+                    </div>
+                </div><br /><br />
+                <label style="text-align:center"> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</label>
+                @Html.HiddenFor(model => model.MAND)
+                @Html.HiddenFor(model => model.LEVEL)
+                @Html.HiddenFor(model => model.MATKHAU)
+                @Html.HiddenFor(model => model.GIOITINH)
+                @Html.HiddenFor(model => model.SDT1)
+                @Html.HiddenFor(model => model.SDT2)
+                @Html.HiddenFor(model => model.EMAIL)
+                <table class="table table-hover center-text">
+                    <tr>
+                        <td style="text-align:right">Nhập lại mật khẫu cũ</td>
+                        <td style="text-align:left">
+                            <input type="text" id="MKC" name="MKC" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:right">Đổi mật khẫu mới</td>
+                        <td style="text-align:left">
+                            <input type="text" id="MKM" name="MKM" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align:left">
+                            <input type="submit" value="Cập nhật" class="btn btn-success" onclick="return confirm('Bạn có chắc chắn muốn cập nhật lại không???')" /> |  @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+}

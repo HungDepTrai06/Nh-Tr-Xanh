@@ -1,0 +1,144 @@
+﻿@model WebBanHang.Models.TINTUC
+
+@{
+    ViewBag.Title = "EditTT";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+
+<div class="container_fullwidth">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="alert alert-warning" style="color:forestgreen">
+                    <h5>Kiểm duyệt bài và xác nhận đăng tin lên website</h5><br />
+                    <span style="color:red"> Bạn nên xem kỹ lại thông tin bài đăng, trước khi kiểm duyệt</span>
+                </div>
+            </div>
+            <div class="col-md-2" style="text-align:center; vertical-align:middle">
+                @Html.ActionLink("Trở về", "Index", null, new { @class = "button submit", style = "text-align:right" })<br /><br />
+            </div>
+            <div class="col-md-10">
+                <table class="table shop-table">
+                    <tr>
+                        <td class="col-md-3" style="vertical-align:middle">   Người đăng</td>
+                        <td class="col-md-8" style="vertical-align:middle">
+                            @ViewBag.HoTen
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-3" style="vertical-align:middle">   Email liên hệ</td>
+                        <td class="col-md-8" style="vertical-align:middle">
+                            @ViewBag.Email
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-3" style="vertical-align:middle">   Số điện thoại</td>
+                        <td class="col-md-8" style="vertical-align:middle">
+                            @ViewBag.SDT
+                    </tr>
+                </table>
+            </div>
+            <form action="/Area/QuanTri_ND/KiemDuyet" method="post" enctype="multipart/form-data">
+
+                <div class="col-md-12">
+                    <div class="checkout-page">
+                        <ol class="checkout-steps">
+                            <li class="steps active">
+                                <a href="#" class="step-title" style="text-align:center"> Thông tin bài đăng </a>
+                                <div class="step-description">
+                                    <div class="row">
+                                        <div class="col-md-10 col-sm-10">
+                                            <table class="table your-details" style="border-spacing:10px 20px">
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        @Html.AntiForgeryToken()
+                                                        <label style="text-align:center; font-size:18px"> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</label>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-3" style="vertical-align:middle"> Tiêu đề  <label style="color:red"> (*) </label></td>
+                                                    <td class="col-md-8" style="vertical-align:middle">
+
+                                                        <input name="MaND" type="hidden" value="@Model.MAND" />
+                                                        @Html.HiddenFor(x => x.NGAYDT)
+                                                        @Html.HiddenFor(x => x.NGAYKT)
+                                                        @Html.HiddenFor(x => x.ID_TinTuc)
+
+                                                        @Html.EditorFor(model => model.TIEUDE, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.TIEUDE, "", new { @class = "text-danger" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-3" style="vertical-align:middle"> Nội dung <label style="color:red"> (*) </label></td>
+                                                    <td class="col-md-8" style="vertical-align:middle">
+                                                        @Html.TextAreaFor(model => model.NOIDUNG, new { @id = "txtNoiDung" })
+                                                        <script type="text/javascript">
+                                                            CKEDITOR.replace("txtNoiDung")
+                                                        </script>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="col-md-3" style="vertical-align:middle"> Địa chỉ cho thuê <label style="color:red"> (*) </label></td>
+                                                    <td class="col-md-8" style="vertical-align:middle">
+                                                        @Html.EditorFor(model => model.DIACHITT, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.DIACHITT, "", new { @class = "text-danger" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-3" style="vertical-align:middle"> Giá tiền <label style="color:red"> (*) </label></td>
+                                                    <td class="col-md-8" style="vertical-align:middle">
+                                                        @Html.EditorFor(model => model.GIATIEN, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.GIATIEN, "", new { @class = "text-danger" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-3" style="vertical-align:middle"> Tiện ích, ghi chú <label style="color:red"> (*) </label></td>
+                                                    <td class="col-md-8" style="vertical-align:middle">
+                                                        @Html.TextAreaFor(model => model.TIENICH, new { @cols = "5", style = "width:600px; height:200px" })
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-3" style="vertical-align:middle"> Chọn huyện quận <label style="color:red"> (*) </label></td>
+                                                    <td class="col-md-8" style="vertical-align:middle">
+                                                        @Html.DropDownList("MAHUYEN", null, htmlAttributes: new { @class = "form-control", style = "width:200px" })
+                                                        @Html.ValidationMessageFor(model => model.MAHUYEN, "", new { @class = "text-danger" })
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-3" style="vertical-align:middle">  Loại tin tức <label style="color:red"> (*) </label></td>
+                                                    <td class="col-md-8" style="vertical-align:middle">
+                                                        @Html.DropDownList("MALOAITT", null, htmlAttributes: new { @class = "form-control", style = "width:200px" })
+                                                        @Html.ValidationMessageFor(model => model.MALOAITT, "", new { @class = "text-danger" })
+                                                    </td>
+                                                </tr>
+                                                <tr style="vertical-align:middle">
+                                                    <td class="col-md-3" style="vertical-align:middle">  Xác nhận đăng tin <label style="color:red"> (*) </label></td>
+                                                    <td class="col-md-8" style="vertical-align:middle">
+                                                        <div class="checkbox">
+                                                            @Html.EditorFor(model => model.TRANGTHAI) Xác nhận đăng lên website Nhà trọ xanh
+                                                            @Html.ValidationMessageFor(model => model.TRANGTHAI, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>
+                                                        <input type="submit" value="Đăng lên website" class="btn btn-success" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

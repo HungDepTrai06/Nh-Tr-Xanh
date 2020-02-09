@@ -1,0 +1,84 @@
+﻿@using WebBanHang.Models;
+@{
+    var db = new DBWebThue();
+    ViewBag.Title = "ThongKe";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="container container_fullwidth" style="width:100%; padding-left:50px; padding-right:50px">
+    <div class="row">
+        <div class="alert alert-info"><h6><i>Thống kê tổng quát</i></h6></div>
+        <table class="table table-bordered" style="text-align:center">
+            <tr style="color:orangered; font-size: 18px">
+                <th>STT </th>
+                <th>Danh mục </th>
+                <td>Tổng số</td>
+                <td>Xem tất cả</td>
+            </tr>
+            <tr style="color:green; font-size: 14px">
+                <th>1 </th>
+                <th>Bài đã được duyệt</th>
+                <td>@ViewBag.SoTT</td>
+                <td><a href="~/Area/QuanTri_ND/Index " class="button wishlist" style="color:blueviolet; background-color:azure">Xem tất cả</a><br /></td>
+            </tr>
+            <tr style="color:green; font-size: 14px">
+                <th>2 </th>
+                <th>Bài chờ kiểm duyệt</th>
+                <td>@ViewBag.SoTTfalse</td>
+                <td><a href="~/Area/QuanTri_ND/BaiKiemDuyet " class="button wishlist" style="color:blueviolet; background-color:azure">Xem tất cả</a></td>
+            </tr>
+            <tr style="color:green; font-size: 14px">
+                <th>3 </th>
+                <th>Người dùng</th>
+                <td>@ViewBag.SoND</td>
+                <td><a href="~/Area/NGUOIDUNGs/Index " class="button wishlist" style="color:blueviolet; background-color:azure">Xem tất cả</a></td>
+            </tr>
+            <tr style="color:green; font-size: 14px">
+                <th>4 </th>
+                <th>Hình ảnh</th>
+                <td>@ViewBag.SoHA</td>
+                <td><a href="~/Area/QuanTri_ND/AllHinh " class="button wishlist" style="color:blueviolet; background-color:azure">Xem tất cả</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <div class="alert alert-info"><h6><i>Thống kê theo loại tin tức</i></h6></div>
+        <table class="table table-bordered" style="text-align:center">
+            <tr style="color:orangered; font-size: 18px">
+                <th>Mã loại </th>
+                <td>Tên loại</td>
+                <td>Số tin tức</td>
+                <td></td>
+            </tr>
+            @foreach (var item in db.LOAITT.ToList())
+            {
+                <tr style="color:green; font-size: 14px">
+                    <th>@item.MALOAITT</th>
+                    <td>@item.TENLOAITT</td>
+                    <td>@item.TINTUC.Count()</td>
+                    <td><a href="~/Area/LOAITTs/XemTatCa?ID=@item.MALOAITT" class="btn btn-info" style="color:blueviolet; background-color:azure">Xem tất cả</a><br /></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="row">
+        <div class="alert alert-info"><h6><i>Thống kê theo huyện quận</i></h6></div>
+        <table class="table table-bordered" style="text-align:center">
+            <tr style="color:orangered; font-size: 18px">
+                <th>Mã huyện, quận </th>
+                <td>Tên huyện, quận</td>
+                <td>Số tin tức</td>
+                <td></td>
+            </tr>
+            @foreach (var item in db.HUYENQUAN.ToList())
+            {
+                <tr style="color:green; font-size: 14px">
+                    <th>@item.MAHUYEN</th>
+                    <td>@item.TENHUYEN</td>
+                    <td>@item.TINTUC.Count()</td>
+                    <td><a href="~/Area/LOAITTs/TTTheoQuan?ID=@item.MAHUYEN" class="btn btn-info" style="color:blueviolet; background-color:azure">Xem tất cả</a><br /></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

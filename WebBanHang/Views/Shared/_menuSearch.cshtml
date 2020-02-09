@@ -1,0 +1,11 @@
+﻿@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+}
+@using (Html.BeginForm("Index","TinTuc"))
+{
+<div style="color:brown; font-size:15px">
+    <input type="text" placeholder="Nhập thông tin muốn tìm kiếm" name="keySearch" style="width:220px" />
+   <br /><br /><div style="text-align:center"> <input type="submit" value="Tìm kiếm" class="btn btn-success" style="text-align:center" /></div>
+</div>
+}

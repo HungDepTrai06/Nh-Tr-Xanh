@@ -1,0 +1,159 @@
+﻿@model PagedList.IPagedList<WebBanHang.Models.TINTUC>
+@using PagedList.Mvc
+@using WebBanHang.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+    var db = new DBWebThue();
+}
+
+<div class="container_fullwidth">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h5 style="padding-top:10px;text-align:center;font-size:20px;color:forestgreen; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"> <strong><i>Chào mừng bạn đến với<b style="color:darkgreen"><u> Nhà trọ xanh</u></b>, website chuyên hổ trợ đăng tin và tìm kiếm phòng trọ, nhà trọ giá cả hợp lý cho sinh viên với rất nhiều tin tức, bài đăng ở khu vực thành phố Hồ Chí Minh</i></strong></h5> <br />
+                <div class="col-md-12">
+                    <div class="checkout-page">
+                        <ol class="checkout-steps">
+                            <li class="steps active">
+                                <div class="step-description">
+                                    <div class="col-md-10">
+                                        @using (Html.BeginForm())
+                                        {
+                                            <label>Bạn có thể tìm kiếm theo tên quận, tên đường, phường, nội dung.....</label> <br />
+                                            <input type="text" placeholder="Nhập thông tin muốn tìm kiếm..." name="keySearch" style="width:400px" />
+                                            <input type="submit" value="Tìm kiếm" class="btn btn-success" style="text-align:center" />
+
+                                        }
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                @if (Model != null)
+                {
+                    if (Model.Count == 0)
+                    {
+                        <div class="alert alert-danger">
+                            Không tìm thấy tin tức hoặc bài đăng nào
+                        </div>
+                    }
+                    else
+                    {
+                        <h3 class="title" style="padding-top:10px; font-weight:bold; "> <strong> @ViewBag.TieuDe</strong></h3>
+                        foreach (var item in Model)
+                        {
+                            <a href="#">
+                                <div class="hot-products">
+                                    <div class="col-md-12">
+                                        <table class="table table-hover" border="1" style="border-color:brown">
+                                            <tr style="padding-left:10px; padding-top:10px">
+                                                <td class="col-md-4">
+                                                    @foreach (var dd in item.DSANH.Where(x => x.ID_TINTUC == item.ID_TinTuc).ToList().Take(1))
+                                                    {
+                                                        <div class="img-thumbnail" style="text-align:center"><a href="~/TinTuc/Details/@item.ID_TinTuc"><img src="~/IndexLayout/images/imagePhongNha/@dd.DUONGDAN " style="width: 320px; height: 150px" /></a></div><br />
+                                                    }
+                                                </td>
+                                                <td class="col-md-8">
+                                                    <div class="productname" style="text-decoration-color: chartreuse"><strong> <a href="~/TinTuc/Details?Id=@item.ID_TinTuc" style="color:darkred"><label style="color:green"> @item.TIEUDE</label></a></strong></div><hr />
+                                                    <div style="font-size:20px">
+                                                        <p>
+                                                            Dịa chỉ: @item.DIACHITT
+                                                        </p>
+
+                                                        <p>
+                                                            Giá tiền:<span style="color:red"> <u><i> @string.Format("{0:#,##0,000}", item.GIATIEN) VNĐ</i></u></span>
+                                                            &nbsp; &nbsp; &nbsp;Khu Vực:<span style="color:forestgreen; font-style:oblique; font-size:15px">  @item.HUYENQUAN.TENHUYEN </span> &nbsp; &nbsp;&nbsp; &nbsp; Ngày đăng tin:<span style="text-align:right; color:mediumvioletred"><i> @(item.NGAYDT.ToShortDateString())</i></span>
+                                                        </p>
+                                                        <p>
+                                                            @item.TIENICH
+                                                        </p>
+                                                        <p>
+                                                            @Html.Raw(item.NOIDUNG)
+                                                        </p>
+                                                        <div>
+                                                            <a class="button submit" href="~/TinTuc/Details/@item.ID_TinTuc">Chi tiết</a>
+                                                            <button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button>
+                                                            @Html.ActionLink("Lưu tin", "AddToCart", "LuuTin", new { ID = item.ID_TinTuc }, new { @class = "button wishlist" })
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    }
+                }
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-3">
+                <div class="list-group" style="margin-top:10px">
+                    <a href="#" class="list-group-item active">
+                        <span class="glyphicon glyphicon-list"></span> Lọc theo hạng mục
+                    </a>
+                    <ul class="list-group-item">
+                        <li>
+                            @*<label style="text-align:left"> Theo thể loại</label><br />*@ @Html.Partial("_locTheoLoai")
+                        </li>
+                    </ul>
+                    <ul class="list-group-item">
+                        <li>
+                            @*<label style="text-align:left"> Theo quận</label><br />*@ @Html.Partial("_HuyenQuan")
+                        </li>
+                    </ul>
+                    <ul class="list-group-item">
+                        <li>
+                            @*<label style="text-align:left"> Theo giá phòng</label><br />*@ @Html.Partial("_SearchGiaPhong")
+                        </li>
+                    </ul>
+                </div>
+                @Html.Partial("_LoaiTinTuc") <br />
+                <div id="productsDetails" class="hot-products">
+                    <h3 class="title"> <strong> Tin mới nhất</strong> </h3>
+                    <div class="control"> <a id="prev_hot" class="prev" href="#"> &lt; </a> <a id="next_hot" class="next" href="#"> &gt; </a> </div>
+                    <div class="row">
+                        @foreach (var item in db.TINTUC.OrderBy(x => x.NGAYDT).ToList().Take(8))
+                        {
+                            <a href="~/TinTuc/Details/@item.ID_TinTuc">
+                                <div class="col-md-12">
+                                    <table class="table table-hover" border="1" style="border-color:brown">
+                                        <tr style="padding-left:10px; padding-top:10px">
+                                            <td class="col-md-4">
+                                                @foreach (var dd in db.DSANH.Where(x => x.ID_TINTUC == item.ID_TinTuc).ToList().Take(1))
+                                                {
+                                                    <div class="img-thumbnail" style="text-align:center"><img src="~/IndexLayout/images/imagePhongNha/@dd.DUONGDAN " style="width: 80px; height:70px" /></div><br />
+                                                }
+                                            </td>
+                                            <td class="col-md-8">
+                                                <div style="text-decoration-color: chartreuse"> <a href="~/TinTuc/Details/@item.ID_TinTuc" style="color:darkred"> @item.TIEUDE</a></div>
+                                                <div style="font-size:20px">
+                                                    <p>
+                                                        Dịa chỉ: @item.DIACHITT
+                                                    </p>
+                                                    <p>Giá tiền:<span style="color:red"> <u><i> @string.Format("{0:#,##0,000}", item.GIATIEN) VNĐ</i></u></span></p>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </a>
+                            <hr />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="row text-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, MaLoaiTT = ViewBag.MaLoaiTT, MaHuyen = ViewBag.MaHuyen, keySearch = ViewBag.keySearch, IDGia = ViewBag.IDGia }))
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+

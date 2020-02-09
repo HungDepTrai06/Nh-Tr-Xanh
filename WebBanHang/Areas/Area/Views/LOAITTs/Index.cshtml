@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebBanHang.Models.LOAITT>
+@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="container container_fullwidth" style="width:100%; padding-left:50px; padding-right:50px">
+    <div class="row">
+        <div class="alert alert-info"><h6><i>Danh sách loại tin tức </i></h6></div><br />
+        <a href="~/Area/LOAITTs/Create" class="button twitter" style="color:forestgreen">Thêm loại tin tức mới</a><br /><br /><br />
+        <table class="table table-bordered" style="text-align:center">
+            <tr style="color:orangered; font-size: 18px">
+                <th>Mã thể loại </th>
+                <td>Tên thể loại</td>
+                <td>Số tin tức</td>
+                <td>Thao tác</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td style="vertical-align:middle">
+                    @Html.DisplayFor(modelItem => item.MALOAITT)
+                </td>
+                <td style="vertical-align:middle"> @Html.DisplayFor(modelItem => item.TENLOAITT)</td>
+                <td style="vertical-align:middle">
+                    @item.TINTUC.Count()
+                </td>
+                <td style="vertical-align:middle">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MALOAITT }, new { @class="btn btn-info"}) |
+
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MALOAITT }, new { @class = "btn btn-danger" })  |
+                    @Html.ActionLink("Xem tin tức", "XemTatCa", new { id = item.MALOAITT }, new { @class = "btn btn-success" }) 
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>

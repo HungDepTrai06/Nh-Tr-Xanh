@@ -1,0 +1,175 @@
+﻿@model WebBanHang.Models.TINTUC
+@{
+    ViewBag.Title = "CreateTT";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="container">
+        
+
+        <form action="~/Area/QuanTri_ND/CreateTT" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+        
+            @*<h4 style="text-align:center;color:chartreuse">Bạn hãy nhập đầy đủ các mục phía dưới để đăng tin...</h4>*@
+            <div class="container_fullwidth">
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-md-11">
+                            <div class="alert alert-success">
+                                <span style="color:green; font-size:14px"> Đăng tin trên Nhà Trọ Xanh tất cả đều miển phí, hãy luôn đóng góp vào website chúng tôi</span>
+                            </div>
+                            <div class="checkout-page">
+                                <ol class="checkout-steps">
+                                    <li class="steps active">
+                                        <span class="step-title" style="text-align:center; color:darkgreen; font-weight:bold; background-color:antiquewhite; text-shadow:1px 0px 3px green, 0px 1px 3px green, -1px 0px 3px black, 0px -1px 3px black;color:aqua">Form đăng tin tức mới</span>
+                                        <div class="step-description">
+                                            <div class="row">
+                                                <div class="col-md-11 col-sm-11">
+                                                    <table class="table" style="border-spacing:10px 20px">
+                                                        <tr>
+
+                                                            <td class="col-md-3"> Tiêu đề <label style="color:red"> (*) </label> </td>
+
+                                                            <td class="col-md-9">
+                                                                @Html.EditorFor(model => model.TIEUDE, new { htmlAttributes = new { @class = "form-control", @placeholder = "Tiêu đề bài đăng, vd: Cho thuê phòng nam giá hợp lý..." } })
+                                                                @Html.ValidationMessageFor(model => model.TIEUDE, "", new { @class = "text-danger" })
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Nội dung <label style="color:red"> (*) </label></td>
+                                                            <td class="col-md-9">
+                                                                @Html.TextAreaFor(model => model.NOIDUNG, new { @id = "txtNoiDung", @placeholder = "Nội dung bài đăng" })
+                                                                <script type="text/javascript">
+                                                                    CKEDITOR.replace("txtNoiDung")
+                                                                </script>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td class="col-md-3"> Địa chỉ cho thuê <label style="color:red"> (*) </label></td>
+                                                            <td class="col-md-9">
+                                                                @Html.EditorFor(model => model.DIACHITT, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ, vd: 252 Lý Chính Thăng - Phường 7 - Quận 3" } })
+                                                                @Html.ValidationMessageFor(model => model.DIACHITT, "", new { @class = "text-danger" })
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Giá tiền <label style="color:red"> (*) </label></td>
+                                                            <td class="col-md-9">
+                                                                
+                                                                @Html.EditorFor(model => model.GIATIEN, new { htmlAttributes = new { @class = "form-control", @placeholder = "Giá tiền, vd:4000000" } })
+                                                                @Html.ValidationMessageFor(model => model.GIATIEN, "", new { @class = "text-danger" })
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Tiện ích, ghi chú <label style="color:red"> (*) </label></td>
+                                                            <td class="col-md-9">
+                                                                @Html.TextAreaFor(model => model.TIENICH, new { @cols = "5", style = "width:600px; height:200px", @placeholder = "Tiện ích, vd: Wifi miễn phí, giờ đóng cửa là 23h..." })
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Chọn huyện quận <label style="color:red"> (*) </label></td>
+                                                            <td class="col-md-9">
+                                                                @Html.DropDownList("MaHuyen", null, htmlAttributes: new { @class = "form-control", style = "width:200px" })
+                                                                @Html.ValidationMessageFor(model => model.MAHUYEN, "", new { @class = "text-danger" })
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3">  Loại tin tức <label style="color:red"> (*) </label></td>
+                                                            <td class="col-md-9">
+                                                                @Html.DropDownList("MaLoaiTT", null, htmlAttributes: new { @class = "form-control", style = "width:200px" })
+                                                                @Html.ValidationMessageFor(model => model.MALOAITT, "", new { @class = "text-danger" })
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> </td>
+                                                            <td class="col-md-9">
+                                                                <span style="color:green; font-size:13px"> Khi nhấn vào nút Tiếp Tục, tin của bạn sẽ được đưa vào phần <a href="~/Area/QuanTri_ND/BaiChoKD" style="color:blue"><u>Bài chờ kiểm duyệt </u></a>, nếu tin bạn hợp lệ chúng tôi sẽ duyệt và tin của bạn sẽ được đưa lên website một cách nhanh chóng nhất.</span><br />
+                                                                <label style="text-align:center"> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>
+                                                                <input type="submit" value="Tiếp Tục" class="btn btn-success" style="background-color:aquamarine; color:red" />&nbsp; &nbsp; |&nbsp; &nbsp; @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info", @style = "background-color:green" })
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="col-md-11">
+                            <div class="checkout-page">
+                                <ol class="checkout-steps">
+                                    <li class="steps active">
+                                        <span class="step-title" style="text-align:center; font-weight:bold; text-shadow:1px 0px 3px green, 0px 1px 3px green, -1px 0px 3px black, 0px -1px 3px black;color:yellow; background-color:aquamarine"> Hướng dẫn đăng tin </span>
+                                        <div class="step-description">
+                                            <div class="row">
+                                                <div class="col-md-11 col-sm-11">
+                                                    <table class="table your-details" style="border-spacing:10px 20px">
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>
+                                                                Những chổ <label style="color:red"> (*) </label> là bắt buộc, bạn vui lòng nhập đầy đủ và chính xác nhé...<br />
+                                                                Tin của bạn sẽ được chúng tôi duyệt và tiếp cận được người tìm kiếm nhanh hơn nếu bạn làm đúng như hướng dẫn...
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Nội dung</td>
+                                                            <td class="col-md-9">
+                                                                Bạn có thể định dạng lại nội dung văn bản, bạn nên viết đơn giản dể hiểu và không vượt quá 600 ký tự<br />
+                                                                Bạn hãy nhập diện tích, mô tả sơ qua để người tìm kiếm có thể dễ dàng hình dung được chổ bạn muốn cho thuê...
+                                                                Ví dụ: Căn hộ đầy đủ nội thất. Nhà mới 100%, giờ giấc tự do,chổ để xe rộng lớn cùng với an ninh khu vực cực kỳ tốt., giá điện nước được tính theo giá nhà nước, wifi miễn phí diện tích: 30m2.
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Chọn huyện quận</td>
+                                                            <td class="col-md-9">
+                                                                Hãy chọn chính xác huyện quận bạn nhé, để người tìm kiếm có thể tìm được dể dàng hơn
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Loại tin tức</td>
+                                                            <td class="col-md-9">
+                                                                Hãy chọn chính xác thể loại tin bạn muốn đăng bạn nhé....
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Địa chỉ cho thuê</td>
+                                                            <td class="col-md-9">
+                                                                Bạn nên ghi cụ thể và chính xác địa chỉ nhà, phòng bạn muốn cho thuê, nếu có ghi chú bạn hãy ghi vào dưới mục ghi chú bên dưới<br />
+                                                                vd: ký túc xá sinh viên 134/45 Lý Chính Thắng phường 7 quận 3 TP HCM...
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Giá tiền</td>
+                                                            <td class="col-md-9">
+                                                                Bạn hãy nhập giá tiền chính xác, bạn chỉ cần nhập tiền kiểu số và đừng có ký tự nào khác nhé...<br />
+                                                                vd: 5000000
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-3"> Tiện ích, ghi chú</td>
+                                                            <td class="col-md-9">
+                                                                Bạn nên nhập thêm một số ít tiện ích hoặc ghi chú để người tìm kiếm biết thêm thông tin về chổ bạn cho thuê, nếu không có tiện ích hay ghi chú nào bạn hãy ghi không<br />
+                                                                VD: Wifi free, đóng cửa trước 23h tối....
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+

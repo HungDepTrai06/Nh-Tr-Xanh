@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebBanHang.Models.DSANH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+
+}
+<div class="row">
+    <div class="col-md-12">
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger">
+                Bạn chưa có hình ảnh nào trong bài đăng
+            </div>
+        }
+        else
+        {
+            <div class="col-md-12">
+                <span style="color:green; font-size:17px">Danh sách hình ảnh của tin tức có mã là: @ViewBag.Idtintuc</span>
+                <a href="~/Area/QuanTri_ND/Index" class="btn btn-info">Trở về</a><br /><br />
+            </div>
+            foreach (var item in Model)
+            {
+                <div class="col-md-3" style="text-align:center">
+                    <img src="~/IndexLayout/images/imagePhongNha/@item.DUONGDAN" style="width:200px;height:100px" /><br />
+                    <a class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa hình ảnh này không?');" href="/Area/DSANHs/Delete?id=@item.ID_ANH">Xóa</a> |
+                    <a class="btn btn-success" href="/Area/DSANHs/Edit?id=@item.ID_ANH">Thay Đổi</a><br /><br />
+                </div>
+            }
+        }
+    </div>
+
+    <div class="col-md-12">
+        <form class="form-group" action="/Area/DSANHs/Create" method="post" enctype="multipart/form-data">
+            <span style="color:green; font-size:15px">Thêm hình mới vào bài đăng:</span><br /><br />
+            <div class="col-md-7">
+
+                <input type="hidden" name="id" value="@ViewBag.Idtintuc" />
+                <input type="file" name="img" class="form-control" />
+            </div>
+            <div class="col-md-5" style="text-align:left">
+                <input type="submit" class="btn btn-primary" value="Lưu hình" />
+            </div>
+        </form>
+    </div>
+</div>

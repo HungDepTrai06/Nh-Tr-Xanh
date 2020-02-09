@@ -1,0 +1,39 @@
+﻿@using WebBanHang.Models
+@{
+    NGUOIDUNG kh = (NGUOIDUNG)Session["KhachHang"];
+}
+@if (kh != null)
+{
+    using (Html.BeginForm("LogOff", "Custommer", FormMethod.Post, new
+    {
+        id = "logoutForm",
+        @class = "navbar-right"
+    }))
+    {
+        @Html.AntiForgeryToken()
+<ul class="nav navbar-nav navbar-right">
+    <li>
+       <a href="#" style="font-family:'Times New Roman', Times, serif; font-style:italic">Xin chào @kh.HOTENND</a> @*@Html.ActionLink("Hello " + kh.TenDangNhap , "ChangePassword", "Custommer", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+    </li>
+    <li>
+        <a href="javascript:document.getElementById('logoutForm').submit()" onclick="return confirm('Bạn chắc chắn muốn đăng xuất???')">
+            Đăng xuất
+        </a>
+    </li>
+    <li><a href="~/Area/QuanTri_ND/Index" class="reg btn btn-info">Quản lý</a></li>
+    <li><a href="~/Area/QuanTri_ND/CreateTT" class="reg btn btn-info">Đăng tin</a></li>
+</ul>
+    }
+}
+else
+{
+<ul class="nav navbar-nav navbar-right">
+    <li>
+        @Html.ActionLink("Đăng ký", "Register", "Custommer", routeValues: null, htmlAttributes: new { id = "registerLink" })
+    </li>
+    <li>
+        @Html.ActionLink("Đăng nhập", "Login", "Custommer", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </li>
+    <li><a href="~/Custommer/Login" class="reg btn btn-info">Đăng tin free</a></li>
+</ul>
+}

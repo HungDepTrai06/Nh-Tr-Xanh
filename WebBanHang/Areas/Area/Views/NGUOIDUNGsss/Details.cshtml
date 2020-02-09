@@ -1,0 +1,75 @@
+﻿@model WebBanHang.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NGUOIDUNG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATKHAU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATKHAU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOTENND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOTENND)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIOITINH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIOITINH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LEVEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LEVEL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAND }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

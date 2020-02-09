@@ -1,0 +1,26 @@
+﻿@model PagedList.IPagedList<WebBanHang.Models.DSANH>
+@using PagedList.Mvc
+@*@using WebBanHang.Models*@
+@{
+    //var db = new DBWebThue();
+    //var tt = db.TINTUC.ToList();
+    //var nd = (NGUOIDUNG)Session["KhachHang"];
+    ViewBag.Title = "AllHinh";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {    
+                <div class="col-md-3">
+                    <img src="~/IndexLayout/images/imagePhongNha/@item.DUONGDAN" style="width:200px;height:100px" /><br />
+                    <a class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa hình ảnh này không?');" href="/Area/DSANHs/Delete?id=@item.ID_ANH">Xóa</a> |
+                </div>
+        }
+
+    </div>
+</div>
+<div class="row text-center" style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("AllHinh", new { page }))
+</div>
+

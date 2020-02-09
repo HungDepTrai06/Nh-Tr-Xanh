@@ -1,0 +1,65 @@
+﻿@model WebBanHang.Models.TINTUC
+@using WebBanHang.Models
+@{
+      var db = new DBWebThue();
+      ViewBag.Title = "DetaisTT";
+      Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+
+<div style="text-align:left">
+    <h3 style="color:forestgreen; font-style:italic"> Chi tiết tin tức </h3>
+</div>
+<div class="clearfix">
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="products-details">
+            <div class="col-md-4">
+                <div class="preview_image">
+                    <div class="preview-small">
+                        <div class="slideshow">
+                            @foreach (var dd in db.DSANH.Where(x => x.ID_TINTUC == Model.ID_TinTuc).ToList())
+                            {
+                                <img src="~/IndexLayout/images/imagePhongNha/@dd.DUONGDAN" alt="" style="width:300px; height:250px" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="products-description">
+                    <h4 class="name"> @Model.TIEUDE </h4>
+                    <hr class="border">
+                    <div class="price"> Giá tiền: <span class="new_price"> @string.Format("{0:#,##0,000}", Model.GIATIEN) <sup> VNĐ </sup> </span> </div>
+                    <hr class="border">
+                    <p>
+                        Mã bài đăng: @Model.ID_TinTuc
+                    </p>
+                    <p>
+                        Mã bài đăng: @Model.DIACHITT
+                    </p>
+                    <p>
+                        Nội dung: @Model.NOIDUNG
+                    </p>
+                    <p>
+                        Tiện ích: @Model.TIENICH
+                    </p>
+                    <p> Tên chủ người đăng tin: <span class="light-red"> @Model.NGUOIDUNG.HOTENND </span> </p>
+                    <p>
+                        Email: @Model.NGUOIDUNG.EMAIL <br />
+                        Số điện thoại: @Model.NGUOIDUNG.SDT1 <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div style="text-align:right">
+        <div>
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn submit" })
+            <a class="btn btn-warning" style="color:green" href="~/QuanTri/QuanTri/EditTT?@Model.ID_TinTuc">Sửa</a>
+        </div>
+    </div>
+</div>
+<div class="clearfix"> </div>
+

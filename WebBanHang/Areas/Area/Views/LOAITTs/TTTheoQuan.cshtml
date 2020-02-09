@@ -1,0 +1,57 @@
+﻿@model PagedList.IPagedList<WebBanHang.Models.TINTUC>
+@using PagedList.Mvc
+@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+    ViewBag.Title = "XemTatCa";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="row">
+    <div class="alert alert-info">
+        <h4 style="color:yellow; text-align:center; text-shadow:1px 0px 3px green, 0px 1px 3px red">Danh sách tin tức theo quận</h4>
+    </div>
+    <table class="table table-bordered" style="text-align:center; vertical-align: middle; width:100%; align-content:center; padding-left:10px">
+        <tr style="color:darkorange; font-size:15px">
+            <th style="text-align:center; vertical-align: baseline"></th>
+            <th style="text-align:center; vertical-align: baseline">Mã bài đăng</th>
+            <th style="text-align:center; vertical-align: baseline">Người Đăng</th>
+            <th style="text-align:center; vertical-align: baseline">Hình ảnh</th>
+            <th style="text-align:center; vertical-align: baseline">Địa chỉ</th>
+            <th style="text-align:center; vertical-align: baseline">Ngày đăng</th>
+            <th style="text-align:center; vertical-align: baseline">Giá tiền</th>
+
+        </tr>
+        @foreach (var item in Model.ToList())
+        {
+            <tr style="text-align:center; vertical-align: middle;font-size:14px">
+                <td style="text-align:center; vertical-align: middle">
+                    <a style="color:green" href="~/Area/QuanTri_ND/EditTT/@item.ID_TinTuc">Sửa</a>
+                    <a style="color:red" href="~/Area/QuanTri_ND/DeleteTT/@item.ID_TinTuc">Xóa</a><br />
+
+                </td>
+                <td style="text-align:center; vertical-align: middle">
+                    @item.ID_TinTuc
+                </td>
+                <td style="text-align:left; vertical-align: middle">
+                    @item.NGUOIDUNG.HOTENND<br />
+                </td>
+                <td style="text-align:center; vertical-align: middle">
+                    @foreach (var ha in db.DSANH.Where(x => x.ID_TINTUC == item.ID_TinTuc).ToList().Take(1))
+                    {
+                        <img src="~/IndexLayout/images/imagePhongNha/@ha.DUONGDAN" style="width: 80px; height: 70px" /><br />
+
+                    }
+                    <a href="~/Area/DSANHs/Index?id=@item.ID_TinTuc" style="color:blue">Quản lý</a>
+                </td>
+                <td style="text-align:right; vertical-align: middle">
+                    @item.DIACHITT
+                </td>
+                <td style="text-align:center; vertical-align: middle; color:forestgreen"> @(item.NGAYDT.ToShortDateString())</td>
+                <td style="text-align:center; vertical-align: middle; color:darkmagenta"> @string.Format("{0:#,##0,000}", item.GIATIEN) VNĐ</td>
+            </tr>
+        }
+    </table><br />
+</div>
+<div class="row text-center" style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("TTTheoQuan", new { page }))
+</div>

@@ -1,0 +1,34 @@
+﻿@model WebBanHang.Models.LOAITT
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="alert alert-info">
+    <h4>Xem lại thông tin loại tin tức trước khi xóa </h4>
+</div>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt style="color:darkgreen; font-size:18px">
+            @Html.DisplayNameFor(model => model.TENLOAITT)
+        </dt>
+
+        <dd style="color:forestgreen; font-size:18px">
+            @Html.DisplayFor(model => model.TENLOAITT)
+        </dd>
+
+    </dl><br /><br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="alert alert-danger">
+            <div class="form-actions no-color">
+                <h4>Xóa loại tin tức này thì những tin tức, hình ảnh thuộc loại tin tức này củng sẽ bị xóa theo <br />Bạn chắc chắn muốn xóa loại tin tức này</h4>
+                <input type="submit" value="Xóa" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa???') "/> |
+                @Html.ActionLink("Trở về", "Index",null, new { @class="btn btn-info"})
+            </div>
+        </div>
+    }
+</div>

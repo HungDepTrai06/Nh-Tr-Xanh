@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Huongdandangtin";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+
+<div class="container">
+    <div style="text-align:center">
+        <p style="color:darkgreen; font-size:60px; font-weight:bold;font-family:serif"> Hướng dẫn đăng tin</p>
+    </div>
+    <div style="text-align:right">
+        <div>
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="products-details">
+                <div style="text-align:left">
+                    <p style="font-size:15px; line-height:normal; font-weight:bold;"> Muốn đăng tin cho thuê nhà trọ, trước hết bạn phải <a href="~/Custommer/Login" style="color:red"><u>Đăng nhập</u></a> vào website nhé. Nếu chưa có tài khoản hãy bấm vào link "<a href="~/Custommer/Register" style="color:red"><u>Đăng kí</u></a>" này để có tài khoản bạn nhé.</p>
+                    <br /><br />
+                    <p style="font-size:13px;font-weight:bold ; line-height:normal">Bước 1: </p>
+                    <p style="font-size:13px; line-height:normal"> Vào trang chủ nhatroxanh.com, nhìn lên góc trên cùng bên phải bạn sẽ thấy nút <b style="font-weight:bold"><u>Đăng tin</u></b>, bấm vào đó nhé.</p>
+                    <p style="font-size:13px;font-weight:bold ; line-height:normal">Bước 2: </p>
+                    <p style="font-size:13px; line-height:normal"> Điền đầy đủ các thông tin bắt buộc vào các ô nhập liệu trong phần đăng tin (phần có dấu <b style="color:red">*</b> màu đỏ).</p>
+                    <p style="font-size:13px; line-height:normal; font-weight:bold">Các mục cần lưu ý khi đăng tin:</p>
+                    <p style="font-size:13px; line-height:normal; margin-left:10px">Phần Giá cho thuê - vui lòng nhập chính xác giá của phòng cho thuê ( ví dụ giá cho thuê là 1.7 triệu VNĐ thì bạn phải ghi đầy đủ là 1700000).</p>
+                    <p style="font-size:13px; line-height:normal; margin-left:10px"> Phần thông tin liên hệ: nhớ điền chính xác số điện thoại, tên cũng như địa chỉ để người tìm kiếm thuê phòng dễ liên hệ cũng như tăng khả năng cho thuê cao hơn (nhiều người không ghi địa chỉ chính xác thì khả năng người ta không gọi điện rất cao đấy).</p>
+                    <p style="font-size:13px; line-height:normal; margin-left:10px">Phần Giá cho thuê - vui lòng nhập chính xác giá của phòng cho thuê ( ví dụ giá cho thuê là 1.7 triệu VNĐ thì bạn phải ghi đầy đủ là 1700000).</p>
+                    <p style="font-size:13px;font-weight:bold ; line-height:normal">Bước 3: </p>
+                    <p style="font-size:13px; line-height:normal; ">Sau khi nhập đầy đủ các thông tin, bấm nút <b style="font-weight:bold">ĐĂNG TIN</b>  ở dưới cùng để hoàn thành việc đăng tin lên website. Nếu có phần nào bạn chưa điền thì website sẽ báo phần đó để bạn điền đầy đủ trước khi đăng tin. Tin của bạn sẽ không hiện lên ngay mà chờ quản trị viên kiểm duyệt, thời gian kiểm duyệt là 1-2 giờ. Chúc bạn thành công!</p>-
+                </div>
+                <br />
+                <div style="text-align:center">
+                    <img src="~/IndexLayout/images/mhc2.jpg" />
+                </div>
+                <br />
+                <div style="text-align:center">
+                    <img src="~/IndexLayout/images/dangtin.jpg" />
+                </div>
+                <br />
+                <div style="text-align:center">
+                    <img src="~/IndexLayout/images/dangtin1.jpg" />
+                </div>
+                <br />
+                <div style="text-align:center">
+                    <img src="~/IndexLayout/images/dangtin2.jpg" />
+                </div>
+                <br /> <br />
+                <p style="font-size:13px;font-weight:bold; text-shadow:1px 0px 3px black, 0px 1px 3px black, -1px 0px 3px black, 0px -1px 3px black; color:orange; font-size:15px">Để đăng kí-đăng tin nhanh chóng và hiệu quả vui lòng xem thêm:</p>
+                <table class="table table-hover">
+                    <tr>
+                        <td width="40px" ; height="40px"><img src="~/IndexLayout/images/muiten.jpg" style="width:40px; height:30px" /></td>
+                        <td style="margin-left:auto"><a href="~/TinTuc/Huongdandangkithanhvien" style="font-size:25px; text-align:left; vertical-align:bottom ; color:orangered; font-family:serif"><u>Hướng dẫn đăng kí thành viên</u></a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px" ; height="40px"><img src="~/IndexLayout/images/muiten.jpg" style="width:40px; height:30px" /></td>
+                        <td style="margin-left:auto"><a href="~/TinTuc/Huongdanquanlithongtin" style="font-size:25px; text-align:left; vertical-align:bottom ; color:orangered;font-family:serif"><u>Hướng dẫn quản lí thông tin cá nhân</u></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br /> <br />
+        <p style="color:darkgreen; font-size:13px; font-style:italic">Nếu có bất cứ vấn đề gì các bạn vào gọi HOTLINE 0982.585.110 để được hỗ trợ sớm nhất. Xin cảm ơn!</p>
+        <br /> <br />
+        @Html.Partial("_fooder_2")
+    </div>
+</div>

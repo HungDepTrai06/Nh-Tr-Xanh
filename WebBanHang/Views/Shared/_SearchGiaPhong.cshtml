@@ -1,0 +1,18 @@
+﻿@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+}
+@using (Html.BeginForm())
+{
+<div style="color:brown; font-size:15px">
+    <select style="width: 150px; border-bottom-style: inset; color:darkred" name="IDGia">
+        <a href="#"> <option value="">Chọn giá tiền</option></a>
+        <a href="~/TinTuc/Index?IDGia=1"> <option value=1>Dưới 2 tr</option></a>
+        <a href="~/TinTuc/Index?IDGia=2"> <option value=2>Từ 2 tr đến 3 tr</option></a>
+        <a href="~/TinTuc/Index?IDGia=3"> <option value=3>Từ 3 tr đến 4 tr</option></a>
+        <a href="~/TinTuc/Index?IDGia=4"> <option value=4>Từ 4 tr đến 5 tr</option></a>
+        <a href="~/TinTuc/Index?IDGia=5"> <option value=5>Trên 5 tr</option></a>
+    </select>
+    <input type="submit" value="Lọc" class="btn btn-success" />
+</div>
+        }

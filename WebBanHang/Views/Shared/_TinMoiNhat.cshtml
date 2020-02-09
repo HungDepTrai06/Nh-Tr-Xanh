@@ -1,0 +1,42 @@
+﻿@model WebBanHang.Models.TINTUC
+@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+}
+    <div class="row">
+        @foreach (var tintuc in db.TINTUC.ToList().Take(5))
+        {
+        <div class="col-md-12">
+            <div class="offer">New</div>
+            <table class="table table-hover" border="1" style="border-color:brown">
+                <tr style="padding-left:10px; padding-top:10px">
+                    <td class="col-md-4">
+                        @foreach (var dd in Model.DSANH.Where(x => x.ID_TINTUC == Model.ID_TINTUC).ToList().Take(1))
+                        {
+                            <div class="img-thumbnail" style="text-align:center"><a href="~/TinTuc/Details/@tintuc.ID_TINTUC"><img src="~/IndexLayout/images/imagePhongNha/@dd.DUONGDAN " style="width: 200px; height:180px" /></a></div><br />
+                        }
+                    </td>
+                    <td class="col-md-6">
+                        <a href="~/TinTuc/Details/@tintuc.ID_TINTUC">
+                            <div class="productname" style="text-decoration-color: chartreuse"><strong> <a href="~/TinTuc/Details/@tintuc.ID_TINTUC" style="color:darkred"> @tintuc.TIEUDE</a></strong></div><hr />
+                            <div style="font-size:20px">
+                                <p>
+                                    Dịa chỉ: @tintuc.DIACHITT
+                                </p>
+                                <p>Giá tiền:<span style="color:red"> <u><i> @string.Format("{0:#,##0,000}", tintuc.GIATIEN) VNĐ</i></u></span></p>
+                                <p>
+                                    @tintuc.TIENICH
+                                </p>
+                                <div>
+                                    <a class="button submit" href="~/TinTuc/Details?Id=@tintuc.ID_TINTUC">Chi tiết</a>
+                                    <button class="button wishlist" type="button"><i class="fa fa-heart-o"></i></button>
+                                    @Html.ActionLink("Lưu tin", "AddToCart", "LuuTin", new { ID = tintuc.ID_TINTUC }, new { @class = "button wishlist" })
+                                </div>
+                            </div>
+                            </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        }
+    </div>

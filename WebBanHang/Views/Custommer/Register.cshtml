@@ -1,0 +1,151 @@
+﻿@model WebBanHang.Models.CustomerVielModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container_fullwidth " style="align-content: center; padding-left:100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="checkout-page">
+                        <ol class="checkout-steps">
+                            <li class="steps active">
+                                <div class="step-description" style="background-color:aquamarine">
+                                    <h5 style="color:green">Tạo tài khoản để đăng tin lên trên website của chúng tôi</h5>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="checkout-page">
+                        <ol class="checkout-steps">
+                            <li class="steps active">
+                                <a href="#" class="step-title" style="text-align:center;background-color:aquamarine; font-weight:bold; text-shadow:1px 0px 3px green, 0px 1px 3px green, -1px 0px 3px black, 0px -1px 3px black;color:orange">Thông tin đăng ký </a>
+                                <div class="step-description">
+                                    <table class="table" style="border-spacing:10px 20px">
+                                        <tr>
+                                            <td> Họ và tên <label style="color:red"> (*) </label></td>
+                                            <td>
+
+                                                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ tên" } })
+                                                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email <label style="color:red"> (*) </label></td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                <label style="text-align:center"> @Html.ValidationSummary(true, "", new { @class = "text-danger" })</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Giới Tính <label style="color:red"> (*) </label></td>
+                                            <td>
+                                                <div class="checkbox">
+                                                    @Html.EditorFor(model => model.GIOITINH) Nam (Nễu là nữ thì để trống)
+                                                    @Html.ValidationMessageFor(model => model.GIOITINH, "", new { @class = "text-danger" })
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Số điện thoại 1 <label style="color:red"> (*) </label></td>
+                                            <td>
+                                                @Html.EditorFor(model => model.SDT1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại 1" } })
+                                                @Html.ValidationMessageFor(model => model.SDT1, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Số điện thoại 2 </td>
+                                            <td>
+                                                @Html.EditorFor(model => model.SDT2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại 2" } })
+                                                @Html.ValidationMessageFor(model => model.SDT2, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mật khẫu <label style="color:red"> (*) </label></td>
+                                            <td>
+                                                @Html.PasswordFor(model => model.PW_ND, new { htmlAttributes = new { @class = "form-control", @style = "width:50%", @placeholder = "Mật khẫu" } })
+                                                @Html.ValidationMessageFor(model => model.PW_ND, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Nhập lại mật khẫu <label style="color:red"> (*) </label></td>
+                                            <td>
+                                                @Html.PasswordFor(model => model.PasswordConfirm, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lại mật khẫu" } })
+                                                @Html.ValidationMessageFor(model => model.PasswordConfirm, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <p class="privacy">
+                                                    <span class="input-radio" style="color:green">
+                                                        Khi nhấn vào nút đăng ký, bạn đã đồng ý với điều khoản, dịch vụ và chính sách bảo mật của chúng tôi
+                                                    </span>
+                                                    @*<span class="input-radio">
+                                <input type="radio" name="user">
+                            </span> <span class="text"> Tôi đã đọc và đồng ý với <a href="#" class="red"> chính sách bảo mật của nhà trọ xanh</a> </span>*@
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <input type="submit" value="Đăng ký" class="button twitter" style="background-color:aliceblue" />
+                                                @*<script language="javascript">
+                            var button = document.getElementById("btn");
+                            button.onclick = function () {
+                                alert("Đăng ký thành công");
+                            }
+                        </script>*@
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="checkout-page">
+                        <ol class="checkout-steps">
+                            <li class="steps active">
+                                <a href="#" class="step-title" style="text-align:center; font-weight:bold">Hướng dẫn đăng ký </a>
+                                <div class="step-description">
+                                    <p style="font-weight:bold ; line-height:normal">- Những chổ <b style="color:red"> (*) </b> là bắt buộc, bạn hãy nhập chính xác và đầy đủ</p> <br />
+                                    <p style="font-weight:bold ; line-height:normal">- Nội dung phải viết bằng tiếng Việt có dấu</p>
+                                    <p style="font-weight:bold ; line-height:normal">- Tiêu đề tin không dài quá 100 kí tự</p>
+                                    <p style="line-height:normal">- Các bạn nên điền đầy đủ thông tin vào các mục để tin đăng có hiệu quả hơn.</p>
+                                    <p style="line-height:normal">- Để tăng độ tin cậy và tin rao được nhiều người quan tâm hơn, hãy sửa vị trí tin rao của bạn trên bản đồ bằng cách kéo icon tới đúng vị trí của tin rao.</p>
+                                    <p style="line-height:normal">- Tin đăng có <b style="font-weight:bold"> hình ảnh </b> rõ ràng sẽ được xem và gọi gấp nhiều lần so với tin rao không có ảnh. Hãy đăng ảnh để được giao dịch nhanh chóng!</p>
+
+                                    <br />Mật khẫu ít nhất là 6 ký tự.<br />
+                                    <br />Vui lòng cung cấp cho chúng tôi số điện thoại của bạn.<br />
+
+                                    <br /><br />
+                                    <P style="color:blue">
+                                        Nếu bạn đã có tài khoản hãy @Html.ActionLink("Đăng nhập tại đây", "Login", "Custommer", new { @class = "btn btn-success" })
+                                    </P>
+                                    <br />
+                                    @Html.ActionLink("Trở về trang chủ", "Index", "TinTuc", new { @class = "btn btn-info" })
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="col-md-11"><img src="~/IndexLayout/images/bg-2.jpg" style="width:100%; height:250px" /></div>
+                @Html.Partial("_fooder_2")
+            </div>
+        </div>
+    </div>
+}

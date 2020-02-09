@@ -1,0 +1,60 @@
+﻿@model WebBanHang.Models.Cart
+@using WebBanHang.Models
+@{
+    var db = new DBWebThue();
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+
+        @if (Model.Items.Count == 0)
+        {
+            <div class="alert alert-danger">Bạn chưa lưu tin nào</div>
+        }
+        else
+        {
+            <div class="alert alert-info"><h6 style="color:blue">Dưới đây là danh sách các bài đăng, tin tức bạn đã lưu tạm thời</h6><br />
+       <span style="color: forestgreen"> Bạn có thể xem xét lại để đưa ra lựa chọn chính xác nhất khi muốn thuê phòng hay nhà trọ</span>
+        </div>
+            <table class="table table-bordered" style="text-align:center; vertical-align: baseline">
+                <tr style="color:orangered; font-size:16px">
+                    <th style="text-align:center; vertical-align: baseline">Thông tin</th>
+                    <th style="text-align:center; vertical-align: baseline">Hình ảnh</th>
+                    <th style="text-align:center; vertical-align: baseline">Địa chỉ</th>
+                    <th style="text-align:center; vertical-align: baseline">Giá tiền</th>
+
+                </tr>
+                @foreach (var item in Model.Items)
+                {
+                    <tr style="text-align:center; vertical-align: middle">
+                        <td style="text-align:center; vertical-align: middle">
+                            <a class="button submit" href="~/TinTuc/Details/@item.Tintuc.ID_TinTuc">Chi Tiết</a>
+                        </td>
+                        <td style="text-align:center; vertical-align: middle">
+                            <div>
+                                @foreach (var dd in db.DSANH.Where(x => x.ID_TINTUC == item.Tintuc.ID_TinTuc).ToList().Take(1))
+                                {
+                                    <img src="~/IndexLayout/images/imagePhongNha/@dd.DUONGDAN" style="width:80px;height:80px" />
+                                }
+                            </div>
+                        </td>
+                        <td style="text-align:left; vertical-align: middle">
+                            Địa chỉ: @item.Tintuc.DIACHITT<br />
+                            Khu vực:<span style="color:green"><u><i> @item.Tintuc.HUYENQUAN.TENHUYEN</i></u></span>
+                        </td>
+                        <td style="text-align:center; vertical-align: middle; color:red; font-size:16px"> @string.Format("{0:#,##0,000}", item.Tintuc.GIATIEN) VNĐ</td>
+                    </tr>
+                }
+            </table><br />
+        }
+
+    </div>
+    <div class="text-right">
+        @Html.ActionLink("Đăng nhập", "Login", "Custommer", null, new { @class = "btn btn-success" })
+        @Html.ActionLink("Tiếp tục xem tin", "Index", "TinTuc", null, new { @class = "btn btn-warning" })
+    </div>   
+</div>
+
+

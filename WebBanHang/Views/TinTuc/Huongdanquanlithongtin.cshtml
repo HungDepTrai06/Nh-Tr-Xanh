@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Huongdanquanlithongtin";
+    Layout = "~/Views/Shared/_Layouts.cshtml";
+}
+
+<div class="container">
+    <div style="text-align:center">
+        <p style="color:darkgreen; font-size:60px; font-weight:bold;font-family:serif"> Hướng dẫn quản lí thông tin</p>
+    </div>
+    <div style="text-align:right">
+        <div>
+            @Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="products-details">
+                <div style="text-align:left">
+                    <p style="font-size:13px; line-height:normal"> Sau khi đăng tin bạn hãy vào phần quản lí để sửa xóa hay cập thông tin nhà trọ cũng như thông tin cá nhân bạn nhé.</p>
+                    <br /><br />
+                    <p style="font-size:13px;font-weight:bold ; line-height:normal">Bước 1: </p>
+                    <p style="font-size:13px; line-height:normal"> Vào trang chủ nhatroxanh.com, nhìn lên góc trên cùng bên phải bạn sẽ thấy nút <a href="~/Custommer/Login" style="color:red"><u>Đăng nhập</u></a>, bấm vào đó nhé.</p>
+                    <p style="font-size:13px;font-weight:bold ; line-height:normal">Bước 2: </p>
+                    <p style="font-size:13px; text-shadow:1px 0px 3px black,  -1px 0px 3px black, 0px -1px 3px black; color:aquamarine; font-size:15px">Chức năng trong phần quản lý: <b style="font-style:italic; color:black; text-shadow:none"> xem và làm theo hình ảnh bên dưới các bạn nhé</b></p>
+                    <br /> <br />
+                    <div style="text-align:center">
+                        <img src="~/IndexLayout/images/mhc3.jpg" />
+                    </div>
+                    <div style="text-align:center">
+                        <img src="~/IndexLayout/images/quanli1.jpg" />
+                    </div>
+                    <div style="text-align:center">
+                        <img src="~/IndexLayout/images/quanli1-1.jpg" />
+                    </div>
+                    <div style="text-align:center">
+                        <img src="~/IndexLayout/images/quanli1-2.jpg" />
+                    </div>
+                    <br />
+                    <div>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 1: <b style="font-size:13px; line-height:normal; font-weight:normal">Mã số tin - giúp bạn dễ dàng quản lý tin đăng hơn.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 2: <b style="font-size:13px; line-height:normal; font-weight:normal">Hình ảnh- giúp bạn quản lí được danh sánh hình ảnh về phòng trọ.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 3: <b style="font-size:13px; line-height:normal; font-weight:normal">Địa chỉ- giúp bạn quản lí được địa chỉ phòng trọ.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 4: <b style="font-size:13px; line-height:normal; font-weight:normal">Ngày mà bạn đăng ti.n</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 5: <b style="font-size:13px; line-height:normal; font-weight:normal">Giá tiền phòng cho thuê.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 6: <b style="font-size:13px; line-height:normal; font-weight:normal">Cho phép bạn sửa nội dung đăng tin-xóa tin. Ngoài ra nếu bảng tin của bạn được duyệt sẽ hiện lên dấu check.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 7: <b style="font-size:13px; line-height:normal; font-weight:normal">Xem và sửa thông tin cá nhân của bạn.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 7.1: <b style="font-size:13px; line-height:normal; font-weight:normal">Email của bạn là tên đăng nhập không được sửa</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 7.2: <b style="font-size:13px; line-height:normal; font-weight:normal">Họ và tên và giới của bạn được sửa.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 7.3: <b style="font-size:13px; line-height:normal; font-weight:normal">Số điện thoại được sửa lại hoặc thêm 1 số khác.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 7.4: <b style="font-size:13px; line-height:normal; font-weight:normal">Mật khẩu cũng sẽ được sửa lại.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 7.5: <b style="font-size:13px; line-height:normal; font-weight:normal">Bạn nhấn vào nút cập nhật để thay đổi mật khẩu.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 8: <b style="font-size:13px; line-height:normal; font-weight:normal">Xem được bạn đã đăng được bao nhiêu bài.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 9: <b style="font-size:13px; line-height:normal; font-weight:normal">Xem được chi tiết tất cả các bài đăng tin của bạn.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 10: <b style="font-size:13px; line-height:normal; font-weight:normal">Xem danh sách bài chờ kiểm duyệt của bạn.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 10.1: <b style="font-size:13px; line-height:normal; font-weight:normal">Xem được danh sách những bài chờ kiểm duyệt của bạn đã đăng được bao nhiêu bài.</b> </p>
+                        <p style="font-size:13px; line-height:normal; font-weight:bold">Số 10.2: <b style="font-size:13px; line-height:normal; font-weight:normal">Cho phép bạn sửa nội dung đăng tin-xóa tin. Ngoài ra nếu bảng tin của bạn được duyệt sẽ hiện lên dấu X.</b> </p>
+                    </div>
+                </div>
+                <br /><br />
+                <p style="font-size:13px;font-weight:bold; text-shadow:1px 0px 3px black, 0px 1px 3px black, -1px 0px 3px black, 0px -1px 3px black; color:orange; font-size:15px">Để đăng kí-đăng tin nhanh chóng và hiệu quả vui lòng xem thêm:</p>
+                <table class="table table-hover">
+                    <tr>
+                        <td width="40px" ; height="40px"><img src="~/IndexLayout/images/muiten.jpg" style="width:40px; height:30px" /></td>
+                        <td style="margin-left:auto"><a href="~/TinTuc/Huongdandangkithanhvien" style="font-size:25px; text-align:left; vertical-align:bottom ; color:orangered; font-family:serif"><u>Hướng dẫn đăng kí thành viên</u></a></td>
+                    </tr>
+                    <tr>
+                        <td width="40px" ; height="40px"><img src="~/IndexLayout/images/muiten.jpg" style="width:40px; height:30px" /></td>
+                        <td style="margin-left:auto"><a href="~/TinTuc/Huongdandangtin" style="font-size:25px; text-align:left; vertical-align:bottom ; color:orangered;font-family:serif"><u>Hướng dẫn đăng tin</u></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br /> <br />
+        <p style="color:darkgreen; font-size:13px; font-style:italic">Nếu có bất cứ vấn đề gì các bạn vào gọi HOTLINE 0982.585.110 để được hỗ trợ sớm nhất. Xin cảm ơn!</p>
+        <br /> <br />
+        @Html.Partial("_fooder_2")
+    </div>
+</div>
+

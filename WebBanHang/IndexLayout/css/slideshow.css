@@ -1,0 +1,25 @@
+.slideshow {
+    position: relative; /*Make the slideshow container  position:relative and make the sub elements absolute to position the sub element absolute to the container*/
+    height: 350px; /*The slide show height*/
+    overflow: hidden;
+}
+
+    .slideshow div {
+        position: absolute;
+        top: 0px;
+        left: 0;
+        z-index: 8;
+    }
+
+        .slideshow div img {
+            width: 600px; /*The image slide show width*/
+            height: 350px; /*The image slide show height*/
+        }
+
+        .slideshow div.active {
+            z-index: 10;
+        }
+
+        .slideshow div.lastactive {
+            z-index: 9;
+        }

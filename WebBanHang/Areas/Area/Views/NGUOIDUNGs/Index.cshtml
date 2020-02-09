@@ -1,0 +1,105 @@
+﻿@model PagedList.IPagedList<WebBanHang.Models.NGUOIDUNG>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Area/Views/Shared/ViewQuanTri.cshtml";
+}
+<div class="container container_fullwidth" style="width:100%; padding-left:50px; padding-right:50px">
+    <div class="row">
+        <div class="alert alert-info" style="color:blue">
+            <h5><i>Danh sách người dùng trên website của chúng ta.</i></h5><br />
+            @ViewBag.tieude<br /><br /><br />
+            <a href="~/Area/NGUOIDUNGs/Create" class="button twitter" style="color:forestgreen">Thêm người dùng</a><br />
+        </div>
+        <div class="col-md-12">
+            @using (Html.BeginForm())
+            {
+                <label style="color:orangered">Tìm kiếm người dùng theo họ tên</label><br /><br />
+                <input type="text" placeholder="Nhập họ, tên người bạn muốn tìm..." name="keySearch" style="width:500px" />
+                <input type="submit" value="Tìm kiếm" class="btn btn-info" style="text-align:center" /> <hr />
+
+            }
+        </div>
+            @if (Model.Count == 0)
+            {
+                <div class="alert alert-danger" style="color:orangered">
+                    <h5><i>Không tìm thấy người dùng nào có họ tên gần giống với từ khóa bạn nhập</i></h5><br />
+
+                </div>
+            }
+            else
+            {
+                <table class="table table-bordered" style="text-align:center">
+                    <tr style="color:green; font-size: 18px">
+                        <th></th>
+                        <th style="text-align:left">Mã ND</th>
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Họ tên
+                        </th>
+                        <th>
+                            Giới Tính
+                        </th>
+                        <th>
+                            Số điện thoại
+                        </th>
+                        <th>
+                            Cấp bậc
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr style="font-size: 15px">
+                            <td style="vertical-align:middle">
+                                <a href="~/Area/NGUOIDUNGs/Edit?id=@item.MAND" class="btn btn-warning">Thông tin</a>
+                                <a href="~/Area/NGUOIDUNGs/Delete?id=@item.MAND" class="btn btn-danger">Xóa</a><br /><br />
+                                <a href="~/Area/NGUOIDUNGs/DSTINND?id=@item.MAND" style="color:green" class="button twitter">Xem bài đăng</a>
+                                @*<a href="~/Area/NGUOIDUNGs/DoiMatKhau?id=@item.MAND" class="btn btn-warning">Đổi mật khẫu</a>*@
+                            </td>
+                            <td style="text-align:center; vertical-align:middle">
+                                @Html.DisplayFor(modelItem => item.MAND)
+                            </td>
+                            <td style="text-align:left; vertical-align:middle">
+                                @Html.DisplayFor(modelItem => item.EMAIL)
+                            </td>
+                            <td style="text-align:left; vertical-align:middle">
+                                @Html.DisplayFor(modelItem => item.HOTENND)
+                            </td>
+                            <td style="text-align:left; vertical-align:middle">
+                                @if (item.GIOITINH)
+                                {
+                                    <label style="color:deepskyblue">Nam</label>
+                                }
+                                else
+                                {
+                                    <label style="color:orangered">Nữ</label>
+                                }
+
+                            </td>
+                            <td style="text-align:left; vertical-align:middle">
+                                @item.SDT1<br />@item.SDT2
+                            </td>
+                            <td style="text-align:left; vertical-align:middle">
+                                @if (item.LEVEL == 1)
+                                {
+                                    <label style="color:blueviolet">Thành viên</label>
+                                }
+                                else
+                                {
+                                    <label style="color:darkblue">Admin</label>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+        <div class="row text-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
