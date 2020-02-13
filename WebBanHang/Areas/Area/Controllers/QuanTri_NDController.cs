@@ -247,6 +247,7 @@ namespace WebBanHang.Areas.Area.Controllers
             }
             //ViewBag.NgayDT = tINTUC.NGAYDT;
             //ViewBag.NgayKT = tINTUC.NGAYKT;
+            tINTUC.TrangThai=false;
             ViewBag.MAHUYEN = new SelectList(db.HUYENQUAN, "MAHUYEN", "TENHUYEN", tINTUC.MAHUYEN);
             ViewBag.MALOAITT = new SelectList(db.LOAITT, "MALOAITT", "TENLOAITT", tINTUC.MALOAITT);
             return View(tINTUC);
